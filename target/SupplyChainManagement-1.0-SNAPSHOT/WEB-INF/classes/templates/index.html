@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html xmlns:th = "http://www.thymeleaf.org">
+    <head>
+        <title>Supply Chain Management</title>
+        <th:block th:replace="base :: bootstrap"></th:block>
+    </head>
+    
+    <body>
+        <div th:replace="base :: header"></div>
+        
+        <h1>SUPPLY CHAIN MANAGE</h1>
+                
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+<!--                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>   -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ncc: ${supplier}">
+                    <td th:text="${ncc.nccId}"></td>
+                    <td th:text="${ncc.tenNCC}"></td>
+                    <td th:text="${ncc.diaChi}"></td>
+                    <td th:text="${ncc.diemDanhGia}"></td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div th:replace="base :: footer"></div>
+    </body>
+</html>
