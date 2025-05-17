@@ -1,0 +1,206 @@
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --text-color: #333;
+  --primary-color: #3498db;
+  --primary-hover: #2980b9;
+  --accent-green: #2ecc71;
+  --accent-green-hover: #27ae60;
+  --bg-main: #f5f7fa;
+  --bg-header: #fff;
+  --bg-nav: #f0f0f0;
+  --bg-card: #e0f3ff;
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --border-color: #ddd;
+}
+
+/* General layout */
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-color);
+}
+
+/* Header */
+.appHeader {
+  background-color: var(--bg-header);
+  box-shadow: var(--shadow-medium);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Optional: Center the content */
+  margin: 0 auto;
+}
+
+.appTitle {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #2c3e50;
+}
+
+/* Navigation */
+.appNav {
+  background-color: var(--bg-nav);
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink,
+.navItem button {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.navLink:hover,
+.navItem button:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+  color: var(--primary-hover);
+}
+
+.navLink:focus-visible,
+.navItem button:focus-visible,
+.quickActions button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Main Content */
+.appMain {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mainContainer {
+  /* Optional: For any specific styling within the main area */
+}
+
+/* Section title */
+.sectionTitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Dashboard Wrapper */
+.dashboard {
+  background-color: var(--bg-header);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-medium);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Summary Cards (3 cột) */
+.summaryCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--bg-card);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease;
+  will-change: transform;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card .value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Truy cập nhanh (3 nút hàng ngang) */
+.actionCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.actionBtn {
+  background-color: var(--accent-green);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.actionBtn:hover {
+  background-color: var(--accent-green-hover);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Footer */
+.appFooter {
+  background-color: var(--bg-header);
+  color: #777;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+}
+@media (max-width: 768px) {
+  .summaryCards,
+  .actionCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footerContainer {
+  /* Optional: For any specific styling within the footer area */
+}

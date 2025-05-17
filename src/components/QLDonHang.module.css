@@ -1,0 +1,120 @@
+.container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    color: #343a40;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 10px;
+  }
+  
+  .buttonCreate {
+    background-color: #28a745; /* Màu xanh lá cây cho nút tạo mới */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  .buttonCreate:hover {
+    background-color: #1e7e34;
+  }
+  
+  .filterContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .filterLabel {
+    margin-right: 10px;
+    color: #495057;
+  }
+  
+  .filterSelect {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-right: 15px;
+  }
+  
+  .searchInput {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 250px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .table th, .table td {
+    border: none;
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .table thead {
+    background-color: #e9ecef;
+  }
+  
+  .table th {
+    font-weight: 600;
+    color: #495057;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+  
+  .actions button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions button:hover {
+    background-color: #545b62;
+  }
+  
+  .actions button:first-child {
+    background-color: #007bff; /* Xem chi tiết */
+  }
+  
+  .actions button:first-child:hover {
+    background-color: #0056b3;
+  }
+  
+  .actions button:last-child {
+    background-color: #dc3545; /* Hủy đơn hàng */
+  }
+  
+  .actions button:last-child:hover {
+    background-color: #c82333;
+  }
