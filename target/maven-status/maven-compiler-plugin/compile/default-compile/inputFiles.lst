@@ -41,6 +41,7 @@ D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\HoTroKhachHangR
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\KhoHangRepositoriesImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\NhaCungCapRepositoryImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\QuanLyKhoRepositoriesImpl.java
+D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\StatsRepositoriesImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\ThanhToanRepositoriesImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\UserRepositoryImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\VanChuyenRepositoriesImpl.java
@@ -51,9 +52,16 @@ D:\SupplyChainManagement\src\main\java\com\scm\repositories\StatsRepository.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\ThanhToanRepository.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\UserRepository.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\VanChuyenRepository.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\ChiPhiService.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\DonHangService.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\HoaDonService.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\impl\HoaDonServiceImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\impl\NhaCungCapServiceImpl.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\impl\QuanLyKhoServiceImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\impl\UserServiceImpl.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\KhoHangService.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\NhaCungCapService.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\QuanLyKhoService.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\UserService.java
 D:\SupplyChainManagement\src\main\java\com\scm\supplychainmanagement\JakartaRestConfiguration.java
 D:\SupplyChainManagement\src\main\java\com\scm\supplychainmanagement\resources\JakartaEE11Resource.java

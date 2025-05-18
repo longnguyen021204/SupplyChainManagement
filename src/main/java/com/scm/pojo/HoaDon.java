@@ -7,7 +7,6 @@ package com.scm.pojo;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 /**
  *
@@ -17,8 +16,8 @@ import java.util.Date;
 @Table(name = "HoaDon")
 @NamedQueries({
         @NamedQuery(name = "HoaDon.findAll", query = "SELECT h FROM HoaDon h"),
-        @NamedQuery(name = "HoaDon.findByDonHangId", query = "SELECT h FROM HoaDon h WHERE h.donHang.dhId = :donHangId"),
         @NamedQuery(name = "HoaDon.findByMaHD", query = "SELECT h FROM HoaDon h WHERE h.maHD = :maHD"),
+        @NamedQuery(name = "HoaDon.findByStatus", query = "SELECT h FROM HoaDon h WHERE h.trangThaiHD = :status"),
         @NamedQuery(name = "HoaDon.findByNgayLapRange", query = "SELECT h FROM HoaDon h WHERE h.ngayLapHD BETWEEN :startDate AND :endDate ORDER BY h.ngayLapHD DESC"),
         @NamedQuery(name = "HoaDon.sortByNgayLapDesc", query = "SELECT h FROM HoaDon h ORDER BY h.ngayLapHD DESC")
 })

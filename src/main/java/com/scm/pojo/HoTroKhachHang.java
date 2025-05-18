@@ -22,6 +22,7 @@ import java.util.Date;
         @NamedQuery(name = "HoTroKhachHang.sortByNgayYeuCauDesc", query = "SELECT h FROM HoTroKhachHang h ORDER BY h.ngayTao DESC")
 })
 public class HoTroKhachHang implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "HTKH_ID")

@@ -19,12 +19,12 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(name = "DonGia.findAll", query = "SELECT d FROM DonGia d"),
         @NamedQuery(name = "DonGia.findByMaSanPham", query = "SELECT d FROM DonGia d WHERE d.maSanPham = :maSanPham"),
-        @NamedQuery(name = "DonGia.findByNhaCungCapId", query = "SELECT d FROM DonGia d WHERE d.nhaCungCap.nccId = :nccId"),
-        @NamedQuery(name = "DonGia.findByMaSanPhamAndNhaCungCapId", query = "SELECT d FROM DonGia d WHERE d.maSanPham = :maSanPham AND d.nhaCungCap.nccId = :nccId"),
         @NamedQuery(name = "DonGia.findLatestByMaSanPham", query = "SELECT d FROM DonGia d WHERE d.maSanPham = :maSanPham ORDER BY d.ngayApDung DESC"), // Cần lấy bản ghi đầu tiên sau khi sắp xếp
         @NamedQuery(name = "DonGia.findByPriceRange", query = "SELECT d FROM DonGia d WHERE d.donGiaMua BETWEEN :minPrice AND :maxPrice")
 })
 public class DonGia implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DG_ID")
@@ -34,7 +34,7 @@ public class DonGia implements Serializable{
     private String maSanPham;
 
     @ManyToOne
-    @JoinColumn(name = "NCC_ID", nullable = false)
+    @JoinColumn(name = "NCC_ID", referencedColumnName = "NCC_ID", nullable = false)
     private NhaCungCap nhaCungCap;
 
     @Column(name = "DonGiaMua", nullable = false, precision = 15, scale = 2)

@@ -16,11 +16,18 @@ import java.util.List;
  */
 @Entity
 @Table(name = "KhoHang")
+@NamedQueries({
+        @NamedQuery(name = "KhoHang.findAll", query = "SELECT k FROM KhoHang k"),
+        @NamedQuery(name = "KhoHang.findByTen", query = "SELECT k FROM KhoHang k WHERE LOWER(k.tenKho) LIKE LOWER(:tenKho)"),
+        @NamedQuery(name = "KhoHang.findByDiaChi", query = "SELECT k FROM KhoHang k WHERE LOWER(k.diaChi) LIKE LOWER(:diaChi)"),
+        
+})
 public class KhoHang implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "Kho_ID")
     private Integer khoId;
 

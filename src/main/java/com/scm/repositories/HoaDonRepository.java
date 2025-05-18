@@ -8,6 +8,7 @@ import com.scm.pojo.DonHang;
 import com.scm.pojo.HoaDon;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,9 +17,7 @@ import java.util.List;
  */
 public interface HoaDonRepository {
     List<HoaDon> getHoaDon();
-    List<HoaDon> getHoaDonByMaHD(String maHD);
-    List<HoaDon> getHoaDonByDonHang(DonHang dh);
-    List<HoaDon> getHoaDonByDate(LocalDateTime ngayLap);
+    HoaDon getHoaDonByMaHD(String maHD);
+    List<HoaDon> getHoaDonByDateBetween(Date startDate, Date endDate);
     List<HoaDon> getHoaDonByTrangThai(String status);
-    List<HoaDon> getHoaDonByTongTien(BigDecimal tongTien);
 }

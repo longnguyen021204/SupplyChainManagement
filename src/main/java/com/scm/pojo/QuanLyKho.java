@@ -18,9 +18,8 @@ import java.util.Date;
 @Table(name = "QuanLyKho", uniqueConstraints = {@UniqueConstraint(columnNames = {"Kho_ID", "MaSanPham"})})
 @NamedQueries({
         @NamedQuery(name = "QuanLyKho.findAll", query = "SELECT q FROM QuanLyKho q"),
-        @NamedQuery(name = "QuanLyKho.findByKhoId", query = "SELECT q FROM QuanLyKho q WHERE q.khoHang.khoId = :khoId"),
         @NamedQuery(name = "QuanLyKho.findByMaSanPham", query = "SELECT q FROM QuanLyKho q WHERE q.maSanPham = :maSanPham"),
-        @NamedQuery(name = "QuanLyKho.findByKhoIdAndMaSanPham", query = "SELECT q FROM QuanLyKho q WHERE q.khoHang.khoId = :khoId AND q.maSanPham = :maSanPham"),
+        @NamedQuery(name = "QuanLyKho.findByTenSanPham", query = "SELECT q FROM QuanLyKho q WHERE q.tenSanPham = :tenSanPham"),
         @NamedQuery(name = "QuanLyKho.findHetHang", query = "SELECT q FROM QuanLyKho q WHERE q.soLuongTon = 0"),
         @NamedQuery(name = "QuanLyKho.findSapHetHang", query = "SELECT q FROM QuanLyKho q WHERE q.soLuongTon <= :nguong")
 })
@@ -29,11 +28,12 @@ public class QuanLyKho implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "QLK_ID")
     private Integer qlkId;
 
-    @ManyToOne
-    @JoinColumn(name = "Kho_ID", nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Kho_ID", referencedColumnName = "Kho_ID", nullable = false)
     private KhoHang khoHang;
 
     @Column(name = "MaSanPham", nullable = false, length = 50)

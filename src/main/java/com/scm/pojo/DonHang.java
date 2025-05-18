@@ -24,6 +24,7 @@ import java.util.List;
         @NamedQuery(name = "DonHang.sortByNgayDatHangDesc", query = "SELECT d FROM DonHang d ORDER BY d.ngayDatHang DESC")
 })
 public class DonHang implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DH_ID")

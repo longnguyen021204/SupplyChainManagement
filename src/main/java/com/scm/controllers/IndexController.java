@@ -25,7 +25,7 @@ public class IndexController {
     
     @RequestMapping("/")
     public String index(Model model, @RequestParam Map<String, String> params){
-//        model.addAttribute("supplier", this.nccService.getAllNCC());
+//        model.addAttribute("supplier", this.nccService.getSuppliers(params));
         
         return "index";
     }

@@ -14,8 +14,9 @@ import java.util.List;
 public interface QuanLyKhoRepository {
     List<QuanLyKho> getAllSanPham ();
     List<QuanLyKho> getSanPhamByMaSP (String maSanPham);
-    List<QuanLyKho> getSanPhamTrongKhoId(int khoId, String maSanPham);
     List<QuanLyKho> getSanPhamByName(String tenSanPham);
     List<QuanLyKho> getSanPhamHetHang();
+    
+    QuanLyKho addOrUpdateSanPham(QuanLyKho sp);
     
 }

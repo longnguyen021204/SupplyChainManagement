@@ -12,6 +12,7 @@ import java.util.List;
  * @author LENOVO
  */
 public interface KhoHangRepository {
+    List<KhoHang> getKhoHang();
     List<KhoHang> getKhoHangByName(String tenKho);
     List<KhoHang> getKhoHangByDiaChi(String diaChiKho);
 }

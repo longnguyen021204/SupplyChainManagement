@@ -38,17 +38,17 @@ public class NhaCungCapServiceImpl implements NhaCungCapService {
 
     @Override
     public NhaCungCap getNCCByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.nccRepo.getNCCByEmail(email);
     }
 
     @Override
-    public NhaCungCap getNCCByDiemDanhGia(Float diemDG) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<NhaCungCap> sortNCCByDiemDanhGiaDesc(){
+        return this.nccRepo.sortNCCByDiemDanhGiaDesc();
     }
 
     @Override
     public NhaCungCap addOrUpdateNCC(NhaCungCap s) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.nccRepo.addOrUpdateNCC(s);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class NhaCungCapServiceImpl implements NhaCungCapService {
 
     @Override
     public List<NhaCungCap> getSuppliers(Map<String, String> params) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.nccRepo.getSuppliers(params);
     }
     
 }

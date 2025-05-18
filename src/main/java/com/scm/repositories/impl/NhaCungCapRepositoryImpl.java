@@ -60,13 +60,14 @@ public class NhaCungCapRepositoryImpl implements NhaCungCapRepository{
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createNamedQuery("NhaCungCap.findByEmail", NhaCungCap.class);
         q.setParameter("email", email);
-
         return (NhaCungCap) q.getSingleResult();
     }
 
     @Override
-    public NhaCungCap getNCCByDiemDanhGia(Float diemDG) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<NhaCungCap> sortNCCByDiemDanhGiaDesc() {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("NhaCungCap.sortByDiemDanhGiaDesc", NhaCungCap.class);
+        return q.getResultList();
     }
 
     @Override
@@ -78,27 +79,28 @@ public class NhaCungCapRepositoryImpl implements NhaCungCapRepository{
 
     @Override
     public NhaCungCap getNCCByName(String tenNCC) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("NhaCungCap.findByTenNCC", NhaCungCap.class);
+        q.setParameter("tenNCC", tenNCC);
+        return (NhaCungCap) q.getSingleResult();
     }
 
     @Override
     public List<NhaCungCap> getSuppliers(Map<String, String> params) {
-        throw new UnsupportedOperationException("Not supported yet.");
-//        
-//        Session s = this.factory.getObject().getCurrentSession();
-//        CriteriaBuilder b = s.getCriteriaBuilder();
-//        CriteriaQuery<NhaCungCap> q = b.createQuery(NhaCungCap.class);
-//        Root root = q.from(NhaCungCap.class);
-//        q.select(root);
-//
-//        if (params != null) {
-//            List<Predicate> predicates = new ArrayList<>();
-//
-//            String kw = params.get("kw");
-//            if (kw != null && !kw.isEmpty()) {
-//                predicates.add(b.like(root.get("name"), String.format("%%%s%%", kw)));
-//            }
-//
+        Session s = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder b = s.getCriteriaBuilder();
+        CriteriaQuery<NhaCungCap> q = b.createQuery(NhaCungCap.class);
+        Root root = q.from(NhaCungCap.class);
+        q.select(root);
+
+        if (params != null) {
+            List<Predicate> predicates = new ArrayList<>();
+
+            String kw = params.get("name");
+            if (kw != null && !kw.isEmpty()) {
+                predicates.add(b.like(root.get("tenNCC"), String.format("%%%s%%", kw)));
+            }
+
 //            String fromPrice = params.get("fromPrice");
 //            if (fromPrice != null && !fromPrice.isEmpty()) {
 //                predicates.add(b.greaterThanOrEqualTo(root.get("price"), fromPrice));
@@ -108,30 +110,30 @@ public class NhaCungCapRepositoryImpl implements NhaCungCapRepository{
 //            if (toPrice != null && !toPrice.isEmpty()) {
 //                predicates.add(b.lessThanOrEqualTo(root.get("price"), toPrice));
 //            }
-//
-//            String cateId = params.get("categoryId");
-//            if (cateId != null && !cateId.isEmpty()) {
+
+//            String c = params.get("category");
+//            if (c != null && !c.isEmpty()) {
 //                predicates.add(b.equal(root.get("categoryId").as(Integer.class), cateId));
 //            }
-//
-//            q.where(predicates.toArray(Predicate[]::new));
-//
-//            String sort = params.get("sort");
-//            if (sort != null && !sort.isEmpty()) {
-//                q.orderBy(b.asc(root.get(sort)));
-//            }
-//        }
-//
-//        Query query = s.createQuery(q);
-//
-//        if (params != null && params.containsKey("page")) {
-//            int page = Integer.parseInt(params.get("page"));
-//            int start = (page - 1) * PAGE_SIZE;
-//            query.setMaxResults(PAGE_SIZE);
-//            query.setFirstResult(start);
-//        }
-//
-//        return query.getResultList();
+
+            q.where(predicates.toArray(Predicate[]::new));
+
+            String sort = params.get("sort");
+            if (sort != null && !sort.isEmpty()) {
+                q.orderBy(b.asc(root.get(sort)));
+            }
+        }
+
+        Query query = s.createQuery(q);
+
+        if (params != null && params.containsKey("page")) {
+            int page = Integer.parseInt(params.get("page"));
+            int start = (page - 1) * PAGE_SIZE;
+            query.setMaxResults(PAGE_SIZE);
+            query.setFirstResult(start);
+        }
+
+        return query.getResultList();
     }
 
 

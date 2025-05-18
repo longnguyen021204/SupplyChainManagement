@@ -6,7 +6,9 @@ package com.scm.repositories.impl;
 
 import com.scm.pojo.KhoHang;
 import com.scm.repositories.KhoHangRepository;
+import jakarta.persistence.Query;
 import java.util.List;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -24,12 +26,25 @@ public class KhoHangRepositoriesImpl implements KhoHangRepository {
     private LocalSessionFactoryBean factory;
     @Override
     public List<KhoHang> getKhoHangByName(String tenKho) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("KhoHang.findByTen", KhoHang.class);
+        q.setParameter("tenKho", tenKho);
+        return q.getResultList();
     }
 
     @Override
     public List<KhoHang> getKhoHangByDiaChi(String diaChiKho) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("KhoHang.findByDiaChi", KhoHang.class);
+        q.setParameter("diaChi", diaChiKho);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<KhoHang> getKhoHang() {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("KhoHang.findAll", KhoHang.class);
+        return q.getResultList();
     }
     
 }

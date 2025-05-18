@@ -18,7 +18,7 @@ public interface NhaCungCapRepository {
     NhaCungCap getNCCByName(String tenNCC);
     NhaCungCap getNCCById(int id);
     NhaCungCap getNCCByEmail(String email);
-    NhaCungCap getNCCByDiemDanhGia(Float diemDG);
+    List<NhaCungCap> sortNCCByDiemDanhGiaDesc();
     
     NhaCungCap addOrUpdateNCC(NhaCungCap s);
     void deleteNCC(int id);

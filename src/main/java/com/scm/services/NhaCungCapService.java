@@ -24,7 +24,7 @@ public interface NhaCungCapService {
 
     NhaCungCap getNCCByEmail(String email);
 
-    NhaCungCap getNCCByDiemDanhGia(Float diemDG);
+    List<NhaCungCap> sortNCCByDiemDanhGiaDesc();
 
     NhaCungCap addOrUpdateNCC(NhaCungCap s);
 

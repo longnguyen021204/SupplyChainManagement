@@ -25,31 +25,46 @@ public class QuanLyKhoRepositoriesImpl implements QuanLyKhoRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+
     @Override
     public List<QuanLyKho> getAllSanPham() {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("FROM QuanLyKho", QuanLyKho.class);
+        Query q = s.createNamedQuery("QuanLyKho.findAll", QuanLyKho.class);
         return q.getResultList();
     }
 
     @Override
     public List<QuanLyKho> getSanPhamByMaSP(String maSanPham) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<QuanLyKho> getSanPhamTrongKhoId(int khoId, String maSanPham) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("QuanLyKho.findByMaSanPham", QuanLyKho.class);
+        q.setParameter("maSanPham", maSanPham);
+        return q.getResultList();
     }
 
     @Override
     public List<QuanLyKho> getSanPhamByName(String tenSanPham) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("QuanLyKho.findByTenSanPham", QuanLyKho.class);
+        q.setParameter("tenSanPham", tenSanPham);
+        return q.getResultList();
     }
 
     @Override
     public List<QuanLyKho> getSanPhamHetHang() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("QuanLyKho.findHetHang", QuanLyKho.class);
+        return q.getResultList();
     }
-    
+
+    @Override
+    public QuanLyKho addOrUpdateSanPham(QuanLyKho sp) {
+        Session a = this.factory.getObject().getCurrentSession();
+        if (sp.getKhoHang().getKhoId() == null) {
+            a.persist(sp);
+        } else {
+            a.merge(sp);
+        }
+        return sp;
+    }
+
 }

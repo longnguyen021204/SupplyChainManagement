@@ -1,5 +1,6 @@
 com\scm\configs\HibernateConfigs.class
 com\scm\repositories\StatsRepository.class
+com\scm\services\DonHangService.class
 com\scm\repositories\KhoHangRepository.class
 com\scm\repositories\ChiTietDonHangNhapRepository.class
 com\scm\repositories\QuanLyKhoRepository.class
@@ -17,6 +18,7 @@ com\scm\pojo\TaiKhoan.class
 com\scm\services\NhaCungCapService.class
 com\scm\controllers\UserController.class
 com\scm\pojo\QuanLyKho.class
+com\scm\repositories\impl\StatsRepositoriesImpl.class
 com\scm\pojo\HoTroKhachHang.class
 com\scm\repositories\DonGiaRepository.class
 com\scm\repositories\impl\DonGiaRepositoriesImpl.class
@@ -30,6 +32,7 @@ com\scm\repositories\VanChuyenRepository.class
 com\scm\pojo\DonHang.class
 com\scm\repositories\impl\UserRepositoryImpl.class
 com\scm\repositories\NhaCungCapRepository.class
+com\scm\services\impl\HoaDonServiceImpl.class
 com\scm\controllers\IndexController.class
 com\scm\configs\ThymeleafConfig.class
 com\scm\repositories\impl\ChiTietDonHangNhapRepositoriesImpl.class
@@ -42,18 +45,23 @@ com\scm\repositories\ThanhToanRepository.class
 com\scm\repositories\impl\QuanLyKhoRepositoriesImpl.class
 com\scm\configs\DispatcherServletInit.class
 com\scm\repositories\HoaDonRepository.class
+com\scm\services\KhoHangService.class
 com\scm\services\UserService.class
 com\scm\pojo\ThanhToan.class
 com\scm\services\impl\NhaCungCapServiceImpl.class
 com\scm\pojo\ChiTietDonHangXuat.class
+com\scm\services\ChiPhiService.class
 com\scm\configs\WebAppContextConfigs.class
 com\scm\repositories\impl\ChiTietDonHangXuatRepositoriesImpl.class
 com\scm\repositories\impl\VanChuyenRepositoriesImpl.class
+com\scm\services\impl\QuanLyKhoServiceImpl.class
 com\scm\supplychainmanagement\JakartaRestConfiguration.class
 com\scm\repositories\impl\DonHangRepositoriesImpl.class
 com\scm\repositories\impl\HoTroKhachHangRepositoriesImpl.class
 com\scm\supplychainmanagement\resources\JakartaEE11Resource.class
 com\scm\pojo\DonGia.class
+com\scm\services\QuanLyKhoService.class
 com\scm\pojo\VanChuyen.class
+com\scm\services\HoaDonService.class
 com\scm\repositories\impl\ChiTietDonHangNhap.class
 com\scm\controllers\NhaCungCapController.class
