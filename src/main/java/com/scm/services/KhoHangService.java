@@ -4,10 +4,18 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.KhoHang;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface KhoHangService {
-    
+
+    List<KhoHang> getKhoHang();
+
+    List<KhoHang> getKhoHangByName(String tenKho);
+
+    List<KhoHang> getKhoHangByDiaChi(String diaChiKho);
 }

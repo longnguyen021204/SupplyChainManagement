@@ -4,10 +4,24 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.DonHang;
+import java.util.Date;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface DonHangService {
+    DonHang getDonHangByMaDH(String maDH);
+
+    List<DonHang> getDonHangByTrangThai(String status);
+
+    List<DonHang> getDonHangByNgayDatHangBetween(Date startDate, Date endDate);
     
+    List<DonHang> getDonHangByNgayDatHang(Date ngayDatHang);
+    
+    DonHang createDonHang(DonHang dh);
+    
+    void cancelDonHang(String maDH);
 }

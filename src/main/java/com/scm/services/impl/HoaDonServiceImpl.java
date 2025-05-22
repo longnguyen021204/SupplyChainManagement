@@ -4,10 +4,37 @@
  */
 package com.scm.services.impl;
 
+import com.scm.pojo.HoaDon;
+import com.scm.services.HoaDonService;
+import java.util.Date;
+import java.util.List;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author LENOVO
  */
-public class HoaDonServiceImpl {
+@Service
+public class HoaDonServiceImpl implements HoaDonService{
+
+    @Override
+    public List<HoaDon> getHoaDon() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public HoaDon getHoaDonByMaHD(String maHD) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<HoaDon> getHoaDonByDateBetween(Date startDate, Date endDate) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<HoaDon> getHoaDonByTrangThai(String status) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

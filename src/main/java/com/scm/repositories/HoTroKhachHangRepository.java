@@ -6,7 +6,7 @@ package com.scm.repositories;
 
 import com.scm.pojo.DonHang;
 import com.scm.pojo.HoTroKhachHang;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,9 +18,7 @@ public interface HoTroKhachHangRepository {
     List<HoTroKhachHang> getByNameKH(String tenKhachHang);
     List<HoTroKhachHang> getByDonHang(DonHang dh);
     List<HoTroKhachHang> getByEmailKH(String emailKH);
-    List<HoTroKhachHang> getByPhoneNumber(String phone);
-    List<HoTroKhachHang> getByTitle(String title);
-    List<HoTroKhachHang> getByContent(String content);
     List<HoTroKhachHang> getByTrangThai(String status);
-    List<HoTroKhachHang> getByCreateDate(LocalDateTime ngayTao);
+    List<HoTroKhachHang> getByDateRange(Date start, Date end);
+    HoTroKhachHang getByCreateDate(Date ngayTao);
 }

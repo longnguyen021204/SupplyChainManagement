@@ -25,6 +25,12 @@ public class NhaCungCapController {
 
     @Autowired
     private NhaCungCapService nccService;
+    
+    @GetMapping("/supplier/view")
+    public String productView(Model model) {
+        model.addAttribute("supplier", new NhaCungCap());
+        return "supplier";
+    }
 
     @GetMapping("/suppliers")
     public String suppliersView(Model model, @RequestParam Map<String, String> params) {
@@ -33,15 +39,14 @@ public class NhaCungCapController {
     }
 
     @GetMapping("/suppliers/{supplierId}")
-    public String productView(Model model, @PathVariable(value = "supplierId") int id) {
+    public String supplierView(Model model, @PathVariable(value = "supplierId") int id) {
         model.addAttribute("supplier", this.nccService.getNCCById(id));
         return "index";
     }
     
     @PostMapping("/suppliers/add")
     public String addSupplier(@ModelAttribute(value = "supplier") NhaCungCap ncc){
-        this.nccService.addOrUpdateNCC(ncc);
-        
+//        this.nccService.addOrUpdateNCC(ncc);
         return "redirect:/";
     }
 }

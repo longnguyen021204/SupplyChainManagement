@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class NhaCungCapServiceImpl implements NhaCungCapService {
+
     @Autowired
     private NhaCungCapRepository nccRepo;
 
@@ -28,7 +29,8 @@ public class NhaCungCapServiceImpl implements NhaCungCapService {
 
     @Override
     public NhaCungCap getNCCByName(String tenNCC) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.nccRepo.getNCCByName(tenNCC);
+
     }
 
     @Override
@@ -42,7 +44,7 @@ public class NhaCungCapServiceImpl implements NhaCungCapService {
     }
 
     @Override
-    public List<NhaCungCap> sortNCCByDiemDanhGiaDesc(){
+    public List<NhaCungCap> sortNCCByDiemDanhGiaDesc() {
         return this.nccRepo.sortNCCByDiemDanhGiaDesc();
     }
 
@@ -53,12 +55,12 @@ public class NhaCungCapServiceImpl implements NhaCungCapService {
 
     @Override
     public void deleteNCC(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.nccRepo.deleteNCC(id);
     }
 
     @Override
     public List<NhaCungCap> getSuppliers(Map<String, String> params) {
         return this.nccRepo.getSuppliers(params);
     }
-    
+
 }

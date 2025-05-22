@@ -74,7 +74,7 @@ public class NhaCungCap implements Serializable{
     public NhaCungCap() {
     }
 
-    public NhaCungCap(Integer nccId, String tenNCC, String diaChi, String soDienThoai, String email, String thongTinLienHe, String dieuKienThanhToan, Float diemDanhGia, Integer soLanDanhGia, Date ngayTao, Date ngayCapNhat, List<ChiTietDonHangNhap> chiTietDonHangNhap, List<DonGia> donGia) {
+    public NhaCungCap(Integer nccId, String tenNCC, String diaChi, String soDienThoai, String email, String thongTinLienHe, String dieuKienThanhToan) {
         this.nccId = nccId;
         this.tenNCC = tenNCC;
         this.diaChi = diaChi;
@@ -82,12 +82,12 @@ public class NhaCungCap implements Serializable{
         this.email = email;
         this.thongTinLienHe = thongTinLienHe;
         this.dieuKienThanhToan = dieuKienThanhToan;
-        this.diemDanhGia = diemDanhGia;
-        this.soLanDanhGia = soLanDanhGia;
-        this.ngayTao = ngayTao;
-        this.ngayCapNhat = ngayCapNhat;
-        this.chiTietDonHangNhap = chiTietDonHangNhap;
-        this.donGia = donGia;
+//        this.diemDanhGia = diemDanhGia;
+//        this.soLanDanhGia = soLanDanhGia;
+//        this.ngayTao = ngayTao;
+//        this.ngayCapNhat = ngayCapNhat;
+//        this.chiTietDonHangNhap = chiTietDonHangNhap;
+//        this.donGia = donGia;
     }
 
     
@@ -223,26 +223,11 @@ public class NhaCungCap implements Serializable{
     public Date getNgayTao() {
         return ngayTao;
     }
-
-    /**
-     * @param ngayTao the ngayTao to set
-     */
-    public void setNgayTao(Date ngayTao) {
-        this.setNgayTao(ngayTao);
-    }
-
     /**
      * @return the ngayCapNhat
      */
     public Date getNgayCapNhat() {
         return ngayCapNhat;
-    }
-
-    /**
-     * @param ngayCapNhat the ngayCapNhat to set
-     */
-    public void setNgayCapNhat(Date ngayCapNhat) {
-        this.setNgayCapNhat(ngayCapNhat);
     }
 
     /**
@@ -271,6 +256,20 @@ public class NhaCungCap implements Serializable{
      */
     public void setDonGia(List<DonGia> donGia) {
         this.donGia = donGia;
+    }
+
+    /**
+     * @param ngayTao the ngayTao to set
+     */
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    /**
+     * @param ngayCapNhat the ngayCapNhat to set
+     */
+    public void setNgayCapNhat(Date ngayCapNhat) {
+        this.ngayCapNhat = ngayCapNhat;
     }
 
 }

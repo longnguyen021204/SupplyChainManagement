@@ -7,8 +7,11 @@ package com.scm.repositories.impl;
 import com.scm.pojo.DonHang;
 import com.scm.pojo.HoTroKhachHang;
 import com.scm.repositories.HoTroKhachHangRepository;
+import jakarta.persistence.Query;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -20,53 +23,66 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class HoTroKhachHangRepositoriesImpl implements HoTroKhachHangRepository{
+public class HoTroKhachHangRepositoriesImpl implements HoTroKhachHangRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+
     @Override
     public List<HoTroKhachHang> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("HoTroKhachHang.findAll", HoTroKhachHang.class);
+        return q.getResultList();
     }
 
     @Override
     public List<HoTroKhachHang> getByNameKH(String tenKhachHang) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("HoTroKhachHang.findByName", HoTroKhachHang.class);
+        q.setParameter("nameKH", tenKhachHang);
+        return q.getResultList();
+
     }
 
     @Override
     public List<HoTroKhachHang> getByDonHang(DonHang dh) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("HoTroKhachHang.findByName", HoTroKhachHang.class);
+        q.setParameter("donHangId", dh.getDhId());
+        return q.getResultList();
     }
 
     @Override
     public List<HoTroKhachHang> getByEmailKH(String emailKH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<HoTroKhachHang> getByPhoneNumber(String phone) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<HoTroKhachHang> getByTitle(String title) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<HoTroKhachHang> getByContent(String content) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("HoTroKhachHang.findByEmail", HoTroKhachHang.class);
+        q.setParameter("emailKhachHang", emailKH);
+        return q.getResultList();
     }
 
     @Override
     public List<HoTroKhachHang> getByTrangThai(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("HoTroKhachHang.findByEmail", HoTroKhachHang.class);
+        q.setParameter("trangThaiHT", status);
+        return q.getResultList();
     }
 
     @Override
-    public List<HoTroKhachHang> getByCreateDate(LocalDateTime ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public HoTroKhachHang getByCreateDate(Date ngayTao) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("HoTroKhachHang.findByCreateDate", HoTroKhachHang.class);
+        q.setParameter("ngayTao", ngayTao);
+        return (HoTroKhachHang) q.getSingleResult();
     }
-    
+
+    @Override
+    public List<HoTroKhachHang> getByDateRange(Date start, Date end) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("HoTroKhachHang.findByNgayYeuCauRange", HoTroKhachHang.class);
+        q.setParameter("startDate", start);
+        q.setParameter("endDate", end);
+        return q.getResultList();
+    }
+
 }

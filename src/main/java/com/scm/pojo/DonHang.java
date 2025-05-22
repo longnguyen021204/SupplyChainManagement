@@ -4,6 +4,7 @@
  */
 package com.scm.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,13 +18,15 @@ import java.util.List;
 @Entity
 @Table(name = "TaiKhoan")
 @NamedQueries({
-        @NamedQuery(name = "DonHang.findAll", query = "SELECT d FROM DonHang d"),
-        @NamedQuery(name = "DonHang.findByMaDH", query = "SELECT d FROM DonHang d WHERE d.maDH = :maDH"),
-        @NamedQuery(name = "DonHang.findByTrangThai", query = "SELECT d FROM DonHang d WHERE d.trangThai = :trangThai"),
-        @NamedQuery(name = "DonHang.findByNgayDatHangRange", query = "SELECT d FROM DonHang d WHERE d.ngayDatHang BETWEEN :startDate AND :endDate ORDER BY d.ngayDatHang DESC"),
-        @NamedQuery(name = "DonHang.sortByNgayDatHangDesc", query = "SELECT d FROM DonHang d ORDER BY d.ngayDatHang DESC")
+    @NamedQuery(name = "DonHang.findAll", query = "SELECT d FROM DonHang d"),
+    @NamedQuery(name = "DonHang.findByMaDH", query = "SELECT d FROM DonHang d WHERE d.maDH = :maDH"),
+    @NamedQuery(name = "DonHang.findByTrangThai", query = "SELECT d FROM DonHang d WHERE d.trangThai = :trangThai"),
+    @NamedQuery(name = "DonHang.findByNgayDatHangRange", query = "SELECT d FROM DonHang d WHERE d.ngayDatHang BETWEEN :startDate AND :endDate ORDER BY d.ngayDatHang DESC"),
+    @NamedQuery(name = "DonHang.findByNgayDatHang", query = "SELECT d FROM DonHang d WHERE d.ngayDatHang = :ngayDatHang"),
+    @NamedQuery(name = "DonHang.sortByNgayDatHangDesc", query = "SELECT d FROM DonHang d ORDER BY d.ngayDatHang DESC")
 })
 public class DonHang implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,24 +55,31 @@ public class DonHang implements Serializable {
     private Date ngayCapNhat;
 
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ChiTietDonHangNhap> chiTietDonHangNhap;
 
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ChiTietDonHangXuat> chiTietDonHangXuat;
 
     @OneToOne(mappedBy = "donHang", cascade = CascadeType.ALL)
+    @JsonIgnore
     private VanChuyen vanChuyen;
 
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ThanhToan> thanhToan;
 
     @OneToOne(mappedBy = "donHang", cascade = CascadeType.ALL)
+    @JsonIgnore
     private HoaDon hoaDon;
 
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<HoTroKhachHang> hoTroKhachHang;
 
     @OneToMany(mappedBy = "donHang")
+    @JsonIgnore
     private List<ChiPhi> chiPhi;
 
     public DonHang() {
@@ -82,8 +92,8 @@ public class DonHang implements Serializable {
         this.trangThai = trangThai;
         this.tongTien = tongTien;
         this.ghiChu = ghiChu;
-        this.ngayTao = ngayTao;
-        this.ngayCapNhat = ngayCapNhat;
+//        this.ngayTao = ngayTao;
+//        this.ngayCapNhat = ngayCapNhat;
         this.chiTietDonHangNhap = chiTietDonHangNhap;
         this.chiTietDonHangXuat = chiTietDonHangXuat;
         this.vanChuyen = vanChuyen;
@@ -302,6 +312,5 @@ public class DonHang implements Serializable {
     public void setChiPhi(List<ChiPhi> chiPhi) {
         this.chiPhi = chiPhi;
     }
-    
-    
+
 }

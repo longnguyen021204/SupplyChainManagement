@@ -7,7 +7,6 @@ package com.scm.pojo;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -52,7 +51,7 @@ public class ChiTietDonHangXuat implements Serializable{
     @Column(name = "NgayCapNhat")
     private Date ngayCapNhat;
 
-    public ChiTietDonHangXuat(Integer ctdhxId, DonHang donHang, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia, BigDecimal thanhTien, Date ngayXuatKho, Date ngayTao, Date ngayCapNhat) {
+    public ChiTietDonHangXuat(Integer ctdhxId, DonHang donHang, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia, BigDecimal thanhTien, Date ngayXuatKho) {
         this.ctdhxId = ctdhxId;
         this.donHang = donHang;
         this.maSanPham = maSanPham;
@@ -61,8 +60,8 @@ public class ChiTietDonHangXuat implements Serializable{
         this.donGia = donGia;
         this.thanhTien = thanhTien;
         this.ngayXuatKho = ngayXuatKho;
-        this.ngayTao = ngayTao;
-        this.ngayCapNhat = ngayCapNhat;
+//        this.ngayTao = ngayTao;
+//        this.ngayCapNhat = ngayCapNhat;
     }
 
     

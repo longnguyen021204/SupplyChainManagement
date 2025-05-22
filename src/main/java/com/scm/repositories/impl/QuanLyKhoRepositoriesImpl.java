@@ -4,7 +4,6 @@
  */
 package com.scm.repositories.impl;
 
-import com.scm.pojo.NhaCungCap;
 import com.scm.pojo.QuanLyKho;
 import com.scm.repositories.QuanLyKhoRepository;
 import jakarta.persistence.Query;

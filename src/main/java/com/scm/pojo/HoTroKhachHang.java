@@ -16,9 +16,12 @@ import java.util.Date;
 @Table(name = "HoTroKhachHang")
 @NamedQueries({
         @NamedQuery(name = "HoTroKhachHang.findAll", query = "SELECT h FROM HoTroKhachHang h"),
+        @NamedQuery(name = "HoTroKhachHang.findByName", query = "SELECT h FROM HoTroKhachHang h WHERE h.tenKhachHang = :nameKH"),
+        @NamedQuery(name = "HoTroKhachHang.findByEmail", query = "SELECT h FROM HoTroKhachHang h WHERE h.emailKhachHang = :emailKH"),
         @NamedQuery(name = "HoTroKhachHang.findByDonHangId", query = "SELECT h FROM HoTroKhachHang h WHERE h.donHang.dhId = :donHangId"),
         @NamedQuery(name = "HoTroKhachHang.findByTrangThaiHT", query = "SELECT h FROM HoTroKhachHang h WHERE h.trangThaiHT = :trangThaiHT"),
         @NamedQuery(name = "HoTroKhachHang.findByNgayYeuCauRange", query = "SELECT h FROM HoTroKhachHang h WHERE h.ngayTao BETWEEN :startDate AND :endDate ORDER BY h.ngayTao DESC"),
+        @NamedQuery(name = "HoTroKhachHang.findByCreateDate", query = "SELECT h FROM HoTroKhachHang h WHERE h.ngayTao = :ngayTao"),
         @NamedQuery(name = "HoTroKhachHang.sortByNgayYeuCauDesc", query = "SELECT h FROM HoTroKhachHang h ORDER BY h.ngayTao DESC")
 })
 public class HoTroKhachHang implements Serializable {

@@ -5,7 +5,7 @@
 package com.scm.repositories;
 
 import com.scm.pojo.DonHang;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,9 +18,11 @@ public interface DonHangRepository {
 
     List<DonHang> getDonHangByTrangThai(String status);
 
-    List<DonHang> getDonHangByNgayDatHangBetween(LocalDateTime startDate, LocalDateTime endDate);
+    List<DonHang> getDonHangByNgayDatHangBetween(Date startDate, Date endDate);
     
-    List<DonHang> getDonHangByNgayDatHang(LocalDateTime ngayDatHang);
+    List<DonHang> getDonHangByNgayDatHang(Date ngayDatHang);
     
     DonHang createDonHang(DonHang dh);
+    
+    void cancelDonHang(String maDH);
 }

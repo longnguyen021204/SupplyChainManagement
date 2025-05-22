@@ -4,13 +4,9 @@
  */
 package com.scm.repositories.impl;
 
-import com.scm.pojo.DonHang;
 import com.scm.pojo.HoaDon;
-import com.scm.pojo.KhoHang;
 import com.scm.repositories.HoaDonRepository;
 import jakarta.persistence.Query;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;

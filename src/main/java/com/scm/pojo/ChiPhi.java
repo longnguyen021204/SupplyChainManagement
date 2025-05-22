@@ -55,15 +55,15 @@ public class ChiPhi implements Serializable {
     public ChiPhi() {
     }
 
-    public ChiPhi(Integer cpId, String loaiChiPhi, String moTa, BigDecimal soTien, Date ngayPhatSinh, DonHang donHang, Date ngayTao, Date ngayCapNhat) {
+    public ChiPhi(Integer cpId, String loaiChiPhi, String moTa, BigDecimal soTien, Date ngayPhatSinh, DonHang donHang) {
         this.cpId = cpId;
         this.loaiChiPhi = loaiChiPhi;
         this.moTa = moTa;
         this.soTien = soTien;
         this.ngayPhatSinh = ngayPhatSinh;
         this.donHang = donHang;
-        this.ngayTao = ngayTao;
-        this.ngayCapNhat = ngayCapNhat;
+//        this.ngayTao = ngayTao;
+//        this.ngayCapNhat = ngayCapNhat;
     }
 
     

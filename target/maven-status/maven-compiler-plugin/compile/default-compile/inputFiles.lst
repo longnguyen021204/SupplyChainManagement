@@ -2,7 +2,9 @@ D:\SupplyChainManagement\src\main\java\com\scm\configs\DispatcherServletInit.jav
 D:\SupplyChainManagement\src\main\java\com\scm\configs\HibernateConfigs.java
 D:\SupplyChainManagement\src\main\java\com\scm\configs\ThymeleafConfig.java
 D:\SupplyChainManagement\src\main\java\com\scm\configs\WebAppContextConfigs.java
+D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiKhoHangController.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiNhaCungCapController.java
+D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiQuanLyKhoController.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\IndexController.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\NhaCungCapController.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\UserController.java
@@ -20,7 +22,6 @@ D:\SupplyChainManagement\src\main\java\com\scm\pojo\QuanLyKho.java
 D:\SupplyChainManagement\src\main\java\com\scm\pojo\TaiKhoan.java
 D:\SupplyChainManagement\src\main\java\com\scm\pojo\ThanhToan.java
 D:\SupplyChainManagement\src\main\java\com\scm\pojo\VanChuyen.java
-D:\SupplyChainManagement\src\main\java\com\scm\repositories\ChiPhi.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\ChiPhiRepository.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\ChiTietDonHangNhapRepository.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\ChiTietDonHangXuatRepository.java
@@ -55,7 +56,12 @@ D:\SupplyChainManagement\src\main\java\com\scm\repositories\VanChuyenRepository.
 D:\SupplyChainManagement\src\main\java\com\scm\services\ChiPhiService.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\DonHangService.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\HoaDonService.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\HoTroKhachHangService.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\impl\ChiPhiServiceImpl.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\impl\DonHangServiceImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\impl\HoaDonServiceImpl.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\impl\HoTroKhachHangServiceImpl.java
+D:\SupplyChainManagement\src\main\java\com\scm\services\impl\KhoHangServiceImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\impl\NhaCungCapServiceImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\impl\QuanLyKhoServiceImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\services\impl\UserServiceImpl.java

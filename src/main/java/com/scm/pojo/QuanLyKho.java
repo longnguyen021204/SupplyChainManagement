@@ -6,7 +6,6 @@ package com.scm.pojo;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -51,13 +50,13 @@ public class QuanLyKho implements Serializable{
     public QuanLyKho() {
     }
 
-    public QuanLyKho(Integer qlkId, KhoHang khoHang, String maSanPham, String tenSanPham, Integer soLuongTon, Date ngayCapNhat) {
+    public QuanLyKho(Integer qlkId, KhoHang khoHang, String maSanPham, String tenSanPham, Integer soLuongTon) {
         this.qlkId = qlkId;
         this.khoHang = khoHang;
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.soLuongTon = soLuongTon;
-        this.ngayCapNhat = ngayCapNhat;
+//        this.ngayCapNhat = ngayCapNhat;
     }
 
     /**

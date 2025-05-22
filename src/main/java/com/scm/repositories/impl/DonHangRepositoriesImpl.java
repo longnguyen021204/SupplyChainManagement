@@ -6,8 +6,11 @@ package com.scm.repositories.impl;
 
 import com.scm.pojo.DonHang;
 import com.scm.repositories.DonHangRepository;
+import jakarta.persistence.Query;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -25,27 +28,55 @@ public class DonHangRepositoriesImpl implements DonHangRepository{
     private LocalSessionFactoryBean factory;
     @Override
     public DonHang getDonHangByMaDH(String maDH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("DonHang.findByMaDH", DonHang.class);
+        q.setParameter("maDH", maDH);
+        return (DonHang) q.getSingleResult();
     }
 
     @Override
     public List<DonHang> getDonHangByTrangThai(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("DonHang.findByTrangThai", DonHang.class);
+        q.setParameter("trangThai", status);
+        return q.getResultList();
     }
 
     @Override
-    public List<DonHang> getDonHangByNgayDatHangBetween(LocalDateTime startDate, LocalDateTime endDate) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<DonHang> getDonHangByNgayDatHangBetween(Date startDate, Date endDate) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("DonHang.findByNgayDatHangRange", DonHang.class);
+        q.setParameter("startDate", startDate);
+        q.setParameter("endDate", endDate);
+        return q.getResultList();
     }
 
     @Override
-    public List<DonHang> getDonHangByNgayDatHang(LocalDateTime ngayDatHang) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<DonHang> getDonHangByNgayDatHang(Date ngayDatHang) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("DonHang.findByNgayDatHang", DonHang.class);
+        q.setParameter("ngayDatHang", ngayDatHang);
+        return q.getResultList();
     }
 
     @Override
     public DonHang createDonHang(DonHang dh) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        if (dh.getDhId() == null) {
+            s.persist(dh);
+        } else {
+            s.merge(dh);
+        }
+        return dh;
     }
+
+    @Override
+    public void cancelDonHang(String maDH) {
+        Session s = this.factory.getObject().getCurrentSession();
+        DonHang d = this.getDonHangByMaDH(maDH);
+        s.remove(d);
+    }
+    
+    
     
 }

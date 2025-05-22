@@ -4,10 +4,16 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.ChiPhi;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface ChiPhiService {
-    
+
+    List<ChiPhi> getByDonHangId(int id);
+
+    List<ChiPhi> getByLoaiChiPhi(String loaiCP);
 }

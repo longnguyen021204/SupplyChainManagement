@@ -58,7 +58,7 @@ public class ChiTietDonHangNhap implements Serializable {
 
     
 
-    public ChiTietDonHangNhap(Integer ctdhnId, DonHang donHang, NhaCungCap nhaCungCap, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia, BigDecimal thanhTien, Date ngayNhapKho, Date ngayTao, Date ngayCapNhat) {
+    public ChiTietDonHangNhap(Integer ctdhnId, DonHang donHang, NhaCungCap nhaCungCap, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia, BigDecimal thanhTien, Date ngayNhapKho) {
         this.ctdhnId = ctdhnId;
         this.donHang = donHang;
         this.nhaCungCap = nhaCungCap;
@@ -68,8 +68,8 @@ public class ChiTietDonHangNhap implements Serializable {
         this.donGia = donGia;
         this.thanhTien = thanhTien;
         this.ngayNhapKho = ngayNhapKho;
-        this.ngayTao = ngayTao;
-        this.ngayCapNhat = ngayCapNhat;
+//        this.ngayTao = ngayTao;
+//        this.ngayCapNhat = ngayCapNhat;
     }
 
     
