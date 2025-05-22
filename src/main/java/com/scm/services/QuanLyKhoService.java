@@ -14,6 +14,7 @@ import java.util.List;
 public interface QuanLyKhoService {
     List<QuanLyKho> getAllSanPham ();
     List<QuanLyKho> getSanPhamByMaSP (String maSanPham);
+    QuanLyKho getSPByKhoIdAndMaSP(int khoId, String maSanPham);
     List<QuanLyKho> getSanPhamByName(String tenSanPham);
     List<QuanLyKho> getSanPhamHetHang();
     

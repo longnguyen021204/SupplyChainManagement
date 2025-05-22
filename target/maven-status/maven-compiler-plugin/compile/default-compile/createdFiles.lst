@@ -69,5 +69,4 @@ com\scm\pojo\DonGia.class
 com\scm\services\QuanLyKhoService.class
 com\scm\pojo\VanChuyen.class
 com\scm\services\HoaDonService.class
-com\scm\repositories\impl\ChiTietDonHangNhap.class
 com\scm\controllers\NhaCungCapController.class

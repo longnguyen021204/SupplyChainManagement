@@ -46,4 +46,10 @@ public class QuanLyKhoServiceImpl implements QuanLyKhoService {
         return this.qlkRepo.addOrUpdateSanPham(sp);
     }
 
+    @Override
+    public QuanLyKho getSPByKhoIdAndMaSP(int khoId, String maSanPham) {
+        return this.qlkRepo.getSPByKhoIdAndMaSP(khoId, maSanPham);
+
+    }
+
 }

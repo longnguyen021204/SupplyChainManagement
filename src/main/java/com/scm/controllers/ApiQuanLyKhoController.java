@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,7 +47,7 @@ public class ApiQuanLyKhoController {
     }
 
     @PostMapping("/quanlykho/add")
-    public ResponseEntity<QuanLyKho> addProduct(@RequestBody QuanLyKho sp) {
+    public ResponseEntity<QuanLyKho> addOrUpdateProduct(@RequestBody QuanLyKho sp) {
         try {
             QuanLyKho addSp = this.qlkService.addOrUpdateSanPham(sp);
             return new ResponseEntity<>(addSp, HttpStatus.CREATED);
@@ -54,4 +55,7 @@ public class ApiQuanLyKhoController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    
+    
+    
 }

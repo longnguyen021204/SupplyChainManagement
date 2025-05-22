@@ -58,12 +58,25 @@ public class QuanLyKhoRepositoriesImpl implements QuanLyKhoRepository {
     @Override
     public QuanLyKho addOrUpdateSanPham(QuanLyKho sp) {
         Session a = this.factory.getObject().getCurrentSession();
-        if (sp.getKhoHang().getKhoId() == null) {
+        QuanLyKho p = getSPByKhoIdAndMaSP(sp.getKhoHang().getKhoId(), sp.getMaSanPham());
+        if (p == null) {
             a.persist(sp);
-        } else {
-            a.merge(sp);
+        }
+        else {
+            int soLuong = p.getSoLuongTon() + sp.getSoLuongTon();
+            p.setSoLuongTon(soLuong);
         }
         return sp;
+    }
+
+    @Override
+    public QuanLyKho getSPByKhoIdAndMaSP(int khoId, String maSanPham) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("QuanLyKho.findByKhoIdAndMaSanPham", QuanLyKho.class);
+        q.setParameter("khoId", khoId);
+        q.setParameter("maSanPham", maSanPham);
+
+        return (QuanLyKho) q.getSingleResult();
     }
 
 }

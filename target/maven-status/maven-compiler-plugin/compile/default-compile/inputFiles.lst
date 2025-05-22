@@ -31,7 +31,6 @@ D:\SupplyChainManagement\src\main\java\com\scm\repositories\DonHangRepository.ja
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\HoaDonRepository.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\HoTroKhachHangRepository.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\ChiPhiRepositoriesImpl.java
-D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\ChiTietDonHangNhap.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\ChiTietDonHangNhapRepositoriesImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\ChiTietDonHangXuatRepositoriesImpl.java
 D:\SupplyChainManagement\src\main\java\com\scm\repositories\impl\DoiTacVanChuyenRepositoriesImpl.java

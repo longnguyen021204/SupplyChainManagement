@@ -13,11 +13,13 @@ import java.util.Date;
  * @author LENOVO
  */
 
+
 @Entity
 @Table(name = "QuanLyKho", uniqueConstraints = {@UniqueConstraint(columnNames = {"Kho_ID", "MaSanPham"})})
 @NamedQueries({
         @NamedQuery(name = "QuanLyKho.findAll", query = "SELECT q FROM QuanLyKho q"),
         @NamedQuery(name = "QuanLyKho.findByMaSanPham", query = "SELECT q FROM QuanLyKho q WHERE q.maSanPham = :maSanPham"),
+        @NamedQuery(name = "QuanLyKho.findByKhoIdAndMaSanPham", query = "SELECT q FROM QuanLyKho q WHERE q.khoHang.khoId = :khoId AND q.maSanPham = :maSanPham"),
         @NamedQuery(name = "QuanLyKho.findByTenSanPham", query = "SELECT q FROM QuanLyKho q WHERE q.tenSanPham = :tenSanPham"),
         @NamedQuery(name = "QuanLyKho.findHetHang", query = "SELECT q FROM QuanLyKho q WHERE q.soLuongTon = 0"),
         @NamedQuery(name = "QuanLyKho.findSapHetHang", query = "SELECT q FROM QuanLyKho q WHERE q.soLuongTon <= :nguong")
