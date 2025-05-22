@@ -45,6 +45,7 @@ public class NhaCungCapRepositoryImpl implements NhaCungCapRepository{
         } else {
             a.merge(s);
         }
+        a.refresh(s);
         return s;
     }
 

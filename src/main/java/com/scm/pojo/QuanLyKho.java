@@ -27,7 +27,6 @@ public class QuanLyKho implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "QLK_ID")
     private Integer qlkId;
 
@@ -143,6 +142,4 @@ public class QuanLyKho implements Serializable{
         this.ngayCapNhat = ngayCapNhat;
     }
     
-    
-
 }

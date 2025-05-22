@@ -5,9 +5,11 @@
 package com.scm.services.impl;
 
 import com.scm.pojo.DonHang;
+import com.scm.repositories.DonHangRepository;
 import com.scm.services.DonHangService;
 import java.util.Date;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,36 +17,39 @@ import org.springframework.stereotype.Service;
  * @author LENOVO
  */
 @Service
-public class DonHangServiceImpl implements DonHangService{
+public class DonHangServiceImpl implements DonHangService {
+
+    @Autowired
+    private DonHangRepository dhRepo;
 
     @Override
     public DonHang getDonHangByMaDH(String maDH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.dhRepo.getDonHangByMaDH(maDH);
     }
 
     @Override
     public List<DonHang> getDonHangByTrangThai(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.dhRepo.getDonHangByTrangThai(status);
     }
 
     @Override
     public List<DonHang> getDonHangByNgayDatHangBetween(Date startDate, Date endDate) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.dhRepo.getDonHangByNgayDatHangBetween(startDate, endDate);
     }
 
     @Override
     public List<DonHang> getDonHangByNgayDatHang(Date ngayDatHang) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.dhRepo.getDonHangByNgayDatHang(ngayDatHang);
     }
 
     @Override
     public DonHang createDonHang(DonHang dh) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.dhRepo.createDonHang(dh);
     }
 
     @Override
     public void cancelDonHang(String maDH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.dhRepo.cancelDonHang(maDH);;
     }
-    
+
 }

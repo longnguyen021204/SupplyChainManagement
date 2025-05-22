@@ -6,6 +6,7 @@ package com.scm.services;
 
 import com.scm.pojo.KhoHang;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface KhoHangService {
 
-    List<KhoHang> getKhoHang();
+    List<KhoHang> getKhoHang(Map<String, String> params);
 
     List<KhoHang> getKhoHangByName(String tenKho);
 

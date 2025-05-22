@@ -8,6 +8,7 @@ import com.scm.pojo.KhoHang;
 import com.scm.repositories.KhoHangRepository;
 import com.scm.services.KhoHangService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,8 @@ public class KhoHangServiceImpl implements KhoHangService {
     private KhoHangRepository khoRepo;
 
     @Override
-    public List<KhoHang> getKhoHang() {
-        return this.khoRepo.getKhoHang();
+    public List<KhoHang> getKhoHang(Map<String, String> params) {
+        return this.khoRepo.getKhoHang(params);
     }
 
     @Override

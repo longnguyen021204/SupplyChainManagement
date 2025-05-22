@@ -6,13 +6,14 @@ package com.scm.repositories;
 
 import com.scm.pojo.KhoHang;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author LENOVO
  */
 public interface KhoHangRepository {
-    List<KhoHang> getKhoHang();
+    List<KhoHang> getKhoHang(Map<String, String> params);
     List<KhoHang> getKhoHangByName(String tenKho);
     List<KhoHang> getKhoHangByDiaChi(String diaChiKho);
 }
