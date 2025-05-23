@@ -346,7 +346,7 @@ function SupplierList() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> 
     </div>
   );
 }

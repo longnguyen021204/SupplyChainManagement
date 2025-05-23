@@ -32,24 +32,29 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      const fetchDashboardData = async () => {
-        try {
-          const response = await fetch('/api/dashboard'); // Thay bằng endpoint thực tế
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          const data = await response.json();
-          setDashboardData(data);
-        } catch (error) {
-          console.error("Could not fetch dashboard data:", error);
-        }
-      };
+ useEffect(() => {
+  const fetchDashboardData = async () => {
+    try {
+      const res = await fetch('http://localhost:8080/SupplyChainManagement/api/suppliers/');
+      const data = await res.json();
 
-      fetchDashboardData();
+      if (!Array.isArray(data)) throw new Error('Dữ liệu không phải mảng');
+
+      console.log('✅ Số lượng nhà cung cấp:', data.length); // Debug kiểm tra
+
+      setDashboardData(prev => ({
+        ...prev,
+        totalSuppliers: data.length,
+      }));
+    } catch (error) {
+      console.error('❌ Lỗi khi lấy nhà cung cấp:', error.message);
     }
-  }, [isLoggedIn]);
+  };
+
+  if (isLoggedIn) {
+    fetchDashboardData();
+  }
+}, [isLoggedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
