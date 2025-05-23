@@ -49,7 +49,7 @@ public class DonHangServiceImpl implements DonHangService {
 
     @Override
     public void cancelDonHang(String maDH) {
-        this.dhRepo.cancelDonHang(maDH);;
+        this.dhRepo.cancelDonHang(maDH);
     }
 
 }

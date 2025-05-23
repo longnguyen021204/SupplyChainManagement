@@ -66,6 +66,11 @@ public class KhoHangRepositoriesImpl implements KhoHangRepository {
             if (kw != null && !kw.isEmpty()) {
                 predicates.add(b.like(root.get("tenKho"), String.format("%%%s%%", kw)));
             }
+            
+            String khoId = params.get("id");
+            if (khoId != null && !khoId.isEmpty()) {
+                predicates.add(b.equal(root.get("id").as(Integer.class), khoId));
+            }
 
             q.where(predicates.toArray(Predicate[]::new));
 

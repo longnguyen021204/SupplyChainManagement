@@ -54,6 +54,14 @@ public class DonHang implements Serializable {
     @Column(name = "NgayCapNhat")
     private Date ngayCapNhat;
 
+    @ManyToOne
+    @JoinColumn(name = "KhoNhapId", referencedColumnName = "Kho_ID")
+    private KhoHang khoNhap;
+
+    @ManyToOne
+    @JoinColumn(name = "KhoXuatId", referencedColumnName = "Kho_ID")
+    private KhoHang khoXuat;
+   
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ChiTietDonHangNhap> chiTietDonHangNhap;

@@ -6,9 +6,11 @@ package com.scm.services.impl;
 
 import com.scm.pojo.DonHang;
 import com.scm.pojo.HoTroKhachHang;
+import com.scm.repositories.HoTroKhachHangRepository;
 import com.scm.services.HoTroKhachHangService;
 import java.util.Date;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,40 +19,43 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class HoTroKhachHangServiceImpl implements HoTroKhachHangService{
-
+    
+    @Autowired
+    private HoTroKhachHangRepository HTKHRepo;
+    
     @Override
     public List<HoTroKhachHang> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.HTKHRepo.getAll();
     }
 
     @Override
     public List<HoTroKhachHang> getByNameKH(String tenKhachHang) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.HTKHRepo.getByNameKH(tenKhachHang);
     }
 
     @Override
     public List<HoTroKhachHang> getByDonHang(DonHang dh) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.HTKHRepo.getByDonHang(dh);
     }
 
     @Override
     public List<HoTroKhachHang> getByEmailKH(String emailKH) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.HTKHRepo.getByEmailKH(emailKH);
     }
 
     @Override
     public List<HoTroKhachHang> getByTrangThai(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.HTKHRepo.getByTrangThai(status);
     }
 
     @Override
     public List<HoTroKhachHang> getByDateRange(Date start, Date end) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.HTKHRepo.getByDateRange(start, end);
     }
 
     @Override
     public HoTroKhachHang getByCreateDate(Date ngayTao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.HTKHRepo.getByCreateDate(ngayTao);
     }
     
 }
