@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Nếu bạn đang dùng React Router
-import styles from './ChiTietDonHang.module.css'; // Import CSS Module
+import styles from './styles/ChiTietDonHang.module.css'; // Import CSS Module
 import { format } from 'date-fns'; // Import thư viện format ngày tháng
 
 function OrderDetail() {
