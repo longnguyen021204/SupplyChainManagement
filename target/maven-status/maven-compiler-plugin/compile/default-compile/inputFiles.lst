@@ -3,6 +3,8 @@ D:\SupplyChainManagement\src\main\java\com\scm\configs\HibernateConfigs.java
 D:\SupplyChainManagement\src\main\java\com\scm\configs\ThymeleafConfig.java
 D:\SupplyChainManagement\src\main\java\com\scm\configs\WebAppContextConfigs.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiDonHangController.java
+D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiDonHangNhapController.java
+D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiDonHangXuatController.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiKhoHangController.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiNhaCungCapController.java
 D:\SupplyChainManagement\src\main\java\com\scm\controllers\ApiQuanLyKhoController.java

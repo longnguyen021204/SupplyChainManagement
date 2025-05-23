@@ -49,6 +49,7 @@ com\scm\services\impl\HoaDonServiceImpl.class
 com\scm\controllers\IndexController.class
 com\scm\configs\ThymeleafConfig.class
 com\scm\repositories\impl\ChiTietDonHangNhapRepositoriesImpl.class
+com\scm\controllers\ApiDonHangNhapController.class
 com\scm\repositories\impl\ThanhToanRepositoriesImpl.class
 com\scm\services\impl\ChiTietDonHangXuatServiceImpl.class
 com\scm\controllers\ApiNhaCungCapController.class
@@ -76,6 +77,7 @@ com\scm\supplychainmanagement\JakartaRestConfiguration.class
 com\scm\repositories\impl\DonHangRepositoriesImpl.class
 com\scm\repositories\impl\HoTroKhachHangRepositoriesImpl.class
 com\scm\supplychainmanagement\resources\JakartaEE11Resource.class
+com\scm\controllers\ApiDonHangXuatController.class
 com\scm\pojo\DonGia.class
 com\scm\services\DoiTacVanChuyenService.class
 com\scm\services\impl\StatsServiceImpl.class

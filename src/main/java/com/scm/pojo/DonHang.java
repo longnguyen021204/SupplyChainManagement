@@ -20,6 +20,8 @@ import java.util.List;
 @NamedQueries({
     @NamedQuery(name = "DonHang.findAll", query = "SELECT d FROM DonHang d"),
     @NamedQuery(name = "DonHang.findByMaDH", query = "SELECT d FROM DonHang d WHERE d.maDH = :maDH"),
+    @NamedQuery(name = "DonHang.findByDonHangNhap", query = "SELECT d FROM DonHang d WHERE d.khoNhap.khoId = :khoId"),
+    @NamedQuery(name = "DonHang.findByDonHangXuat", query = "SELECT d FROM DonHang d WHERE d.khoXuat.khoId = :khoId"),
     @NamedQuery(name = "DonHang.findByTrangThai", query = "SELECT d FROM DonHang d WHERE d.trangThai = :trangThai"),
     @NamedQuery(name = "DonHang.findByNgayDatHangRange", query = "SELECT d FROM DonHang d WHERE d.ngayDatHang BETWEEN :startDate AND :endDate ORDER BY d.ngayDatHang DESC"),
     @NamedQuery(name = "DonHang.findByNgayDatHang", query = "SELECT d FROM DonHang d WHERE d.ngayDatHang = :ngayDatHang"),
@@ -91,25 +93,31 @@ public class DonHang implements Serializable {
     private List<ChiPhi> chiPhi;
 
     public DonHang() {
+        this.ngayDatHang = new Date();
+        this.ngayTao = new Date();
     }
 
-    public DonHang(Integer dhId, String maDH, Date ngayDatHang, String trangThai, BigDecimal tongTien, String ghiChu, Date ngayTao, Date ngayCapNhat, List<ChiTietDonHangNhap> chiTietDonHangNhap, List<ChiTietDonHangXuat> chiTietDonHangXuat, VanChuyen vanChuyen, List<ThanhToan> thanhToan, HoaDon hoaDon, List<HoTroKhachHang> hoTroKhachHang, List<ChiPhi> chiPhi) {
+    public DonHang(Integer dhId, String maDH, String trangThai, BigDecimal tongTien, String ghiChu, Date ngayTao, KhoHang khoNhap, KhoHang khoXuat) {
         this.dhId = dhId;
         this.maDH = maDH;
-        this.ngayDatHang = ngayDatHang;
+//        this.ngayDatHang = ngayDatHang;
         this.trangThai = trangThai;
         this.tongTien = tongTien;
         this.ghiChu = ghiChu;
 //        this.ngayTao = ngayTao;
 //        this.ngayCapNhat = ngayCapNhat;
-        this.chiTietDonHangNhap = chiTietDonHangNhap;
-        this.chiTietDonHangXuat = chiTietDonHangXuat;
-        this.vanChuyen = vanChuyen;
-        this.thanhToan = thanhToan;
-        this.hoaDon = hoaDon;
-        this.hoTroKhachHang = hoTroKhachHang;
-        this.chiPhi = chiPhi;
+        this.khoNhap = khoNhap;
+        this.khoXuat = khoXuat;
+//        this.chiTietDonHangNhap = chiTietDonHangNhap;
+//        this.chiTietDonHangXuat = chiTietDonHangXuat;
+//        this.vanChuyen = vanChuyen;
+//        this.thanhToan = thanhToan;
+//        this.hoaDon = hoaDon;
+//        this.hoTroKhachHang = hoTroKhachHang;
+//        this.chiPhi = chiPhi;
     }
+
+    
 
     /**
      * @return the dhId
@@ -319,6 +327,34 @@ public class DonHang implements Serializable {
      */
     public void setChiPhi(List<ChiPhi> chiPhi) {
         this.chiPhi = chiPhi;
+    }
+
+    /**
+     * @return the khoNhap
+     */
+    public KhoHang getKhoNhap() {
+        return khoNhap;
+    }
+
+    /**
+     * @param khoNhap the khoNhap to set
+     */
+    public void setKhoNhap(KhoHang khoNhap) {
+        this.khoNhap = khoNhap;
+    }
+
+    /**
+     * @return the khoXuat
+     */
+    public KhoHang getKhoXuat() {
+        return khoXuat;
+    }
+
+    /**
+     * @param khoXuat the khoXuat to set
+     */
+    public void setKhoXuat(KhoHang khoXuat) {
+        this.khoXuat = khoXuat;
     }
 
 }

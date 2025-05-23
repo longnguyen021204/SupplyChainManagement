@@ -45,7 +45,7 @@ public class ApiNhaCungCapController {
 
     @DeleteMapping("/suppliers/{supplierId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable(value = "supplierId") int id) {
+    public void deleteSupplier(@PathVariable(value = "supplierId") int id) {
         this.nccService.deleteNCC(id);
     }
 

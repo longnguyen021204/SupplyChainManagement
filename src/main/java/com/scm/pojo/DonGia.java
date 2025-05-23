@@ -18,8 +18,10 @@ import java.util.Date;
 @NamedQueries({
         @NamedQuery(name = "DonGia.findAll", query = "SELECT d FROM DonGia d"),
         @NamedQuery(name = "DonGia.findByMaSanPham", query = "SELECT d FROM DonGia d WHERE d.maSanPham = :maSanPham"),
+        @NamedQuery(name = "DonGia.findByNhaCungCap", query = "SELECT d FROM DonGia d WHERE d.nhaCungCap.tenNCC = :tenNCC"),
         @NamedQuery(name = "DonGia.findLatestByMaSanPham", query = "SELECT d FROM DonGia d WHERE d.maSanPham = :maSanPham ORDER BY d.ngayApDung DESC"), // Cần lấy bản ghi đầu tiên sau khi sắp xếp
-        @NamedQuery(name = "DonGia.findByPriceRange", query = "SELECT d FROM DonGia d WHERE d.donGiaMua BETWEEN :minPrice AND :maxPrice")
+        @NamedQuery(name = "DonGia.findByPriceRange", query = "SELECT d FROM DonGia d WHERE d.donGiaMua BETWEEN :minPrice AND :maxPrice"),
+        @NamedQuery(name = "DonGia.findByNgayApDung", query = "SELECT d FROM DonGia d WHERE d.ngayApDung = :ngayApDung")
 })
 public class DonGia implements Serializable{
     

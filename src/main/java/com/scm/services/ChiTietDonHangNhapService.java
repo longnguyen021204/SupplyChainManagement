@@ -4,10 +4,16 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.ChiTietDonHangNhap;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface ChiTietDonHangNhapService {
-    
+
+    List<ChiTietDonHangNhap> getDonHangNhap();
+
+    ChiTietDonHangNhap createDonHangNhap(ChiTietDonHangNhap dhNhap);
 }

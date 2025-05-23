@@ -4,10 +4,18 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.TaiKhoan;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface UserService {
-    
+    List<TaiKhoan> getAllUser();
+    List<TaiKhoan> getUserByRole(String role);
+    TaiKhoan getUserByUsername(String username);
+    TaiKhoan getUserByEmail(String email);
+    TaiKhoan addAccount(TaiKhoan t);
+    boolean authenticate(String username, String pwd);
 }

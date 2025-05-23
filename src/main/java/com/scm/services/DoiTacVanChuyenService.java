@@ -4,10 +4,16 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.DoiTacVanChuyen;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface DoiTacVanChuyenService {
-    
+
+    List<DoiTacVanChuyen> getDoiTacByName(String tenDoiTac);
+
+    List<DoiTacVanChuyen> getDoiTacByDiemDG(Float diemDG);
 }

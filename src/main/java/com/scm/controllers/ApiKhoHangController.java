@@ -26,7 +26,7 @@ public class ApiKhoHangController {
     @Autowired
     private KhoHangService khoService;
     
-    @GetMapping("/warehouse/")
+    @GetMapping("/khohang/")
     public ResponseEntity<List<KhoHang>> list(@RequestParam Map<String, String> params) {
         return new ResponseEntity<>(this.khoService.getKhoHang(params), HttpStatus.OK);
     }

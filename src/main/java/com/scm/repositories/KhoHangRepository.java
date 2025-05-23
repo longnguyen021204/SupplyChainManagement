@@ -14,6 +14,8 @@ import java.util.Map;
  */
 public interface KhoHangRepository {
     List<KhoHang> getKhoHang(Map<String, String> params);
+
     List<KhoHang> getKhoHangByName(String tenKho);
+
     List<KhoHang> getKhoHangByDiaChi(String diaChiKho);
 }

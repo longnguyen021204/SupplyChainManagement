@@ -52,4 +52,19 @@ public class DonHangServiceImpl implements DonHangService {
         this.dhRepo.cancelDonHang(maDH);
     }
 
+    @Override
+    public List<DonHang> getDonHang() {
+        return this.dhRepo.getDonHang();
+    }
+
+    @Override
+    public List<DonHang> getDonHangNhap(int khoId) {
+        return this.dhRepo.getDonHangNhap(khoId);
+    }
+
+    @Override
+    public List<DonHang> getDonHangXuat(int khoId) {
+        return this.dhRepo.getDonHangXuat(khoId);
+    }
+
 }

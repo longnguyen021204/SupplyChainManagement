@@ -5,6 +5,7 @@
 package com.scm.repositories;
 
 import com.scm.pojo.ChiTietDonHangNhap;
+import com.scm.pojo.DonHang;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,6 @@ import java.util.Map;
  * @author LENOVO
  */
 public interface ChiTietDonHangNhapRepository {
-    List<ChiTietDonHangNhap> getDonHangNhap(Map<String, String> params);
-    
+    List<ChiTietDonHangNhap> getDonHangNhap();
+    ChiTietDonHangNhap createDonHangNhap(ChiTietDonHangNhap dhNhap);
 }

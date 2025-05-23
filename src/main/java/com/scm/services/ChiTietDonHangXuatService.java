@@ -4,10 +4,16 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.ChiTietDonHangXuat;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface ChiTietDonHangXuatService {
-    
+
+    List<ChiTietDonHangXuat> getDonHangXuat();
+
+    ChiTietDonHangXuat createDonHangXuat(ChiTietDonHangXuat dhXuat);
 }

@@ -22,10 +22,11 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class DonHangRepositoriesImpl implements DonHangRepository{
+public class DonHangRepositoriesImpl implements DonHangRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+
     @Override
     public DonHang getDonHangByMaDH(String maDH) {
         Session s = this.factory.getObject().getCurrentSession();
@@ -62,21 +63,46 @@ public class DonHangRepositoriesImpl implements DonHangRepository{
     @Override
     public DonHang createDonHang(DonHang dh) {
         Session s = this.factory.getObject().getCurrentSession();
-        if (dh.getDhId() == null) {
+        if (dh.getDhId() == null)
+        {
             s.persist(dh);
         } else {
             s.merge(dh);
         }
+        s.refresh(dh);
         return dh;
     }
-
+    
+    
+    
     @Override
     public void cancelDonHang(String maDH) {
         Session s = this.factory.getObject().getCurrentSession();
         DonHang d = this.getDonHangByMaDH(maDH);
         s.remove(d);
     }
-    
-    
-    
+
+    @Override
+    public List<DonHang> getDonHangNhap(int khoId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("DonHang.findByDonHangNhap", DonHang.class);
+        q.setParameter("khoId", khoId);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<DonHang> getDonHangXuat(int khoId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("DonHang.findByDonHangXuat", DonHang.class);
+        q.setParameter("khoId", khoId);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<DonHang> getDonHang() {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("DonHang.findAll", DonHang.class);
+        return q.getResultList();
+    }
+
 }

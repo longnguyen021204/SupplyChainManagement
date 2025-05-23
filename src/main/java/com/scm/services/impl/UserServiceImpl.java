@@ -4,7 +4,9 @@
  */
 package com.scm.services.impl;
 
+import com.scm.pojo.TaiKhoan;
 import com.scm.services.UserService;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,5 +15,35 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService{
+
+    @Override
+    public List<TaiKhoan> getAllUser() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<TaiKhoan> getUserByRole(String role) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public TaiKhoan getUserByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public TaiKhoan getUserByEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public TaiKhoan addAccount(TaiKhoan t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean authenticate(String username, String pwd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

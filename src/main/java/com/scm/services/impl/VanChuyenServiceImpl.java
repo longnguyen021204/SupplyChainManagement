@@ -4,10 +4,13 @@
  */
 package com.scm.services.impl;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author LENOVO
  */
+@Service
 public class VanChuyenServiceImpl {
     
 }

@@ -4,10 +4,22 @@
  */
 package com.scm.services;
 
+import com.scm.pojo.DonHang;
+import com.scm.pojo.ThanhToan;
+import java.util.Date;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public interface ThanhToanService {
-    
+
+    List<ThanhToan> getThanhToanByDonHang(DonHang dh);
+
+    List<ThanhToan> getThanhToanByType(String loaiTT);
+
+    List<ThanhToan> getThanhToanByTrangThai(String status);
+
+    List<ThanhToan> getThanhToanByDateRange(Date start, Date end);
 }

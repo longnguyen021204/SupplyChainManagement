@@ -5,9 +5,12 @@
 package com.scm.repositories.impl;
 
 import com.scm.pojo.ChiTietDonHangXuat;
+import com.scm.pojo.DonHang;
 import com.scm.repositories.ChiTietDonHangXuatRepository;
+import jakarta.persistence.Query;
 import java.util.List;
 import java.util.Map;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -19,13 +22,28 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class ChiTietDonHangXuatRepositoriesImpl implements ChiTietDonHangXuatRepository{
+public class ChiTietDonHangXuatRepositoriesImpl implements ChiTietDonHangXuatRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+
     @Override
-    public List<ChiTietDonHangXuat> getDonHangXuat(Map<String, String> params) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<ChiTietDonHangXuat> getDonHangXuat() {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("ChiTietDonHangXuat.findAll", ChiTietDonHangXuat.class);
+        return q.getResultList();
     }
-    
+
+    @Override
+    public ChiTietDonHangXuat createDonHangXuat(ChiTietDonHangXuat dhXuat) {
+        Session s = this.factory.getObject().getCurrentSession();
+        if (dhXuat.getCtdhxId() == null) {
+            s.persist(dhXuat);
+        } else {
+            s.merge(dhXuat);
+        }
+        s.refresh(dhXuat);
+        return dhXuat;
+    }
+
 }
