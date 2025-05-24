@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,7 @@ public class ApiDonHangController {
     private DonHangService dhService;
     
     @GetMapping("/donhang")
-    public ResponseEntity<List<DonHang>> list() {
+    public ResponseEntity<List<DonHang>> donHang() {
         return new ResponseEntity<>(this.dhService.getDonHang(), HttpStatus.OK);
     }
     @GetMapping("/donhang/donhang-xuat/{khoId}")
@@ -39,7 +40,10 @@ public class ApiDonHangController {
         return new ResponseEntity<>(this.dhService.getDonHangNhap(khoId), HttpStatus.OK);
     }
     
-    
+    @PostMapping("/donhang/new")
+    public ResponseEntity<DonHang> themDonHang(@RequestBody DonHang dh){
+        return new ResponseEntity<>(this.dhService.createDonHang(dh), HttpStatus.CREATED);
+    }
     
     
 }

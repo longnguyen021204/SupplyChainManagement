@@ -16,7 +16,7 @@ import java.util.List;
  * @author LENOVO
  */
 @Entity
-@Table(name = "TaiKhoan")
+@Table(name = "DonHang")
 @NamedQueries({
     @NamedQuery(name = "DonHang.findAll", query = "SELECT d FROM DonHang d"),
     @NamedQuery(name = "DonHang.findByMaDH", query = "SELECT d FROM DonHang d WHERE d.maDH = :maDH"),
