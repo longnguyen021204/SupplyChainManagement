@@ -66,7 +66,7 @@ public class KhoHangRepositoriesImpl implements KhoHangRepository {
             if (kw != null && !kw.isEmpty()) {
                 predicates.add(b.like(root.get("tenKho"), String.format("%%%s%%", kw)));
             }
-            
+
             String khoId = params.get("id");
             if (khoId != null && !khoId.isEmpty()) {
                 predicates.add(b.equal(root.get("id").as(Integer.class), khoId));
@@ -83,6 +83,14 @@ public class KhoHangRepositoriesImpl implements KhoHangRepository {
 
         return query.getResultList();
 
+    }
+
+    @Override
+    public KhoHang getKhoHangById(int khoId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("KhoHang.findById", KhoHang.class);
+        q.setParameter("khoId", khoId);
+        return (KhoHang) q.getSingleResult();
     }
 
 }

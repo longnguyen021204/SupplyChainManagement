@@ -17,6 +17,8 @@ public interface KhoHangService {
     List<KhoHang> getKhoHang(Map<String, String> params);
 
     List<KhoHang> getKhoHangByName(String tenKho);
+    
+    KhoHang getKhoHangById(int khoId);
 
     List<KhoHang> getKhoHangByDiaChi(String diaChiKho);
 }

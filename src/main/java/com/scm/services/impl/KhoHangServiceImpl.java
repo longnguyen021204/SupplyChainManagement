@@ -37,4 +37,9 @@ public class KhoHangServiceImpl implements KhoHangService {
         return this.khoRepo.getKhoHangByDiaChi(diaChiKho);
     }
 
+    @Override
+    public KhoHang getKhoHangById(int khoId) {
+        return this.khoRepo.getKhoHangById(khoId);
+    }
+
 }

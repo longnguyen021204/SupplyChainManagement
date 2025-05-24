@@ -10,7 +10,9 @@ import com.scm.pojo.DonHang;
 import com.scm.services.ChiTietDonHangNhapService;
 import com.scm.services.ChiTietDonHangXuatService;
 import com.scm.services.DonHangService;
+import java.lang.System.Logger;
 import java.util.List;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,28 +53,16 @@ public class ApiDonHangController {
         return new ResponseEntity<>(this.dhService.getDonHangNhap(khoId), HttpStatus.OK);
     }
 
+
     @PostMapping("/donhang/new")
     public ResponseEntity<DonHang> themDonHang(@RequestBody DonHang dh) {
         try {
-            if ((dh.getKhoNhap() == null && dh.getKhoXuat() == null)
-                    || (dh.getKhoNhap() != null && dh.getKhoXuat() != null)) {
-                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-            } 
-            //NHAP HANG
-            else if (dh.getKhoNhap() != null && dh.getChiTietDonHangNhap() != null) {
-
+            if (dh.getDhId() == null) {
                 return new ResponseEntity<>(this.dhService.createDonHang(dh), HttpStatus.CREATED);
-            } 
-            //XUAT HANG
-            else if (dh.getKhoXuat() != null && dh.getChiTietDonHangXuat() != null) {
-                
-                return new ResponseEntity<>(this.dhService.createDonHang(dh), HttpStatus.CREATED);
-            } 
-            else {
-                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            else return new ResponseEntity<>(dh, HttpStatus.BAD_REQUEST);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(dh, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

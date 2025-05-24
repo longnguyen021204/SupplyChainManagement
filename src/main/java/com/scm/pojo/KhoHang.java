@@ -20,6 +20,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "KhoHang.findAll", query = "SELECT k FROM KhoHang k"),
         @NamedQuery(name = "KhoHang.findByTen", query = "SELECT k FROM KhoHang k WHERE LOWER(k.tenKho) LIKE LOWER(:tenKho)"),
+        @NamedQuery(name = "KhoHang.findById", query = "SELECT k FROM KhoHang k WHERE k.khoId = :khoId"),
         @NamedQuery(name = "KhoHang.findByDiaChi", query = "SELECT k FROM KhoHang k WHERE LOWER(k.diaChi) LIKE LOWER(:diaChi)"),
         
 })
