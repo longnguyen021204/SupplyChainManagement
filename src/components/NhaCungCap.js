@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles/NhaCungCap.module.css';
 import { format } from 'date-fns';
+import { useLocation } from 'react-router-dom';
 
 const API_URL = 'http://localhost:8080/SupplyChainManagement/api/suppliers/';
 
@@ -24,15 +25,17 @@ function SupplierList() {
     type: null,
     data: null
   });
-
-  // ************** BỔ SUNG CHO TÍNH NĂNG ĐÁNH GIÁ **************
+  const [deleteConfirm, setDeleteConfirm] = useState({
+    show: false,
+    supplierId: null,
+    supplierName: ''
+  });
   const [ratingInput, setRatingInput] = useState({
     chatLuong: 0,
     giaoHang: 0,
     giaCa: 0,
     binhLuan: '',
   });
-  // **********************************************************
 
   useEffect(() => {
     const fetchSuppliers = async () => {
@@ -83,19 +86,25 @@ function SupplierList() {
     }
   };
 
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('mode') === 'add') {
+      setModal({ type: 'add', data: initialSupplierState });
+    }
+  }, [location.search]);
+
   const formatDate = (dateString) =>
     dateString ? format(new Date(dateString), 'yyyy-MM-dd HH:mm:ss') : '';
 
-  // ************** HÀM MỚI ĐỂ XỬ LÝ ĐÁNH GIÁ TRÊN FRONTEND **************
   const handleRatingSubmit = (supplierId) => {
     const { chatLuong, giaoHang, giaCa } = ratingInput;
-    // Tính điểm trung bình (có thể tùy chỉnh trọng số)
     const newAverageRating = (parseInt(chatLuong) + parseInt(giaoHang) + parseInt(giaCa)) / 3;
 
     setSuppliers(prevSuppliers =>
       prevSuppliers.map(supplier => {
         if (supplier.nccId === supplierId) {
-          // Tính lại tổng điểm và số lần đánh giá
           const currentTotalRating = supplier.diemDanhGia * supplier.soLanDanhGia;
           const newTotalRating = currentTotalRating + newAverageRating;
           const newNumberOfRatings = supplier.soLanDanhGia + 1;
@@ -103,20 +112,37 @@ function SupplierList() {
 
           return {
             ...supplier,
-            diemDanhGia: parseFloat(updatedAverageRating.toFixed(1)), // Làm tròn 1 chữ số thập phân
+            diemDanhGia: parseFloat(updatedAverageRating.toFixed(1)),
             soLanDanhGia: newNumberOfRatings,
-            ngayCapNhat: new Date().toISOString(), // Cập nhật thời gian
-            // Có thể lưu thêm bình luận nếu muốn hiển thị
-            // comments: [...(supplier.comments || []), ratingInput.binhLuan]
+            ngayCapNhat: new Date().toISOString(),
           };
         }
         return supplier;
       })
     );
-    setModal({ type: null, data: null }); // Đóng modal
-    setRatingInput({ chatLuong: 0, giaoHang: 0, giaCa: 0, binhLuan: '' }); // Reset input
+    setModal({ type: null, data: null });
+    setRatingInput({ chatLuong: 0, giaoHang: 0, giaCa: 0, binhLuan: '' });
   };
-  // *******************************************************************
+
+  const handleDeleteClick = (supplierId, supplierName) => {
+    setDeleteConfirm({
+      show: true,
+      supplierId,
+      supplierName
+    });
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (deleteConfirm.supplierId) {
+      await handleSupplierAction(
+        'DELETE', 
+        `${API_URL}${deleteConfirm.supplierId}`, 
+        null, 
+        () => setSuppliers(suppliers.filter(sp => sp.nccId !== deleteConfirm.supplierId))
+      );
+      setDeleteConfirm({ show: false, supplierId: null, supplierName: '' });
+    }
+  };
 
   if (loading) return <div>Đang tải nhà cung cấp...</div>;
   if (error) return <div>Lỗi: {error}</div>;
@@ -134,6 +160,7 @@ function SupplierList() {
         <button className={styles.buttonAdd} onClick={() => setModal({ type: 'add', data: initialSupplierState })}>
           Thêm mới
         </button>
+        
         <input
           type="text"
           placeholder="Tìm kiếm theo tên hoặc địa chỉ..."
@@ -150,10 +177,9 @@ function SupplierList() {
               add: 'Thêm Nhà Cung Cấp Mới',
               edit: 'Sửa Nhà Cung Cấp',
               view: 'Chi tiết Nhà Cung Cấp',
-              rate: `Đánh giá Nhà Cung Cấp: ${modal.data?.tenNCC}` // Tiêu đề mới cho modal đánh giá
+              rate: `Đánh giá Nhà Cung Cấp: ${modal.data?.tenNCC}`
             }[modal.type]}</h3>
 
-            {/* Các trường form Thêm/Sửa */}
             {['add', 'edit'].includes(modal.type) ? (
               <>
                 {['tenNCC', 'diaChi', 'soDienThoai', 'email', 'thongTinLienHe'].map(field => (
@@ -190,7 +216,7 @@ function SupplierList() {
                   />
                 </div>
               </>
-            ) : modal.type === 'rate' ? ( // ************** GIAO DIỆN ĐÁNH GIÁ MỚI **************
+            ) : modal.type === 'rate' ? (
               <>
                 <div className={styles.formGroup}>
                   <label htmlFor="chatLuong">Chất lượng (1-5):</label>
@@ -234,7 +260,7 @@ function SupplierList() {
                   />
                 </div>
               </>
-            ) : ( // Hiển thị chi tiết (view)
+            ) : (
               modal.data && Object.entries({
                 nccId: 'ID',
                 tenNCC: 'Tên',
@@ -244,12 +270,10 @@ function SupplierList() {
                 thongTinLienHe: 'Người liên hệ',
                 dieuKienThanhToan: 'Điều kiện thanh toán',
                 diemDanhGia: 'Điểm đánh giá',
-                soLanDanhGia: 'Số lần đánh giá',
-                ngayTao: 'Ngày tạo',
-                ngayCapNhat: 'Ngày cập nhật'
+                soLanDanhGia: 'Số lần đánh giá'
               }).map(([key, label]) => (
                 <p key={key} className={styles.detailsInfo}>
-                  <strong>{label}:</strong> {key.includes('ngay') ? formatDate(modal.data[key]) : modal.data[key]}
+                  <strong>{label}:</strong> {modal.data[key]}
                 </p>
               ))
             )}
@@ -282,7 +306,6 @@ function SupplierList() {
                   Lưu
                 </button>
               )}
-              {/* ************** NÚT LƯU CHO ĐÁNH GIÁ MỚI ************** */}
               {modal.type === 'rate' && (
                 <button
                   className={styles.buttonSave}
@@ -291,12 +314,11 @@ function SupplierList() {
                   Gửi đánh giá
                 </button>
               )}
-              {/* ***************************************************** */}
               <button
                 className={styles.buttonCancel}
                 onClick={() => {
                   setModal({ type: null, data: null });
-                  setRatingInput({ chatLuong: 0, giaoHang: 0, giaCa: 0, binhLuan: '' }); // Reset khi hủy
+                  setRatingInput({ chatLuong: 0, giaoHang: 0, giaCa: 0, binhLuan: '' });
                 }}
               >
                 {modal.type === 'view' ? 'Đóng' : 'Hủy'}
@@ -306,10 +328,33 @@ function SupplierList() {
         </div>
       )}
 
+      {deleteConfirm.show && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <h3>Xác nhận xóa</h3>
+            <p>Bạn có chắc chắn muốn xóa nhà cung cấp "{deleteConfirm.supplierName}"?</p>
+            <div className={styles.modalActions}>
+              <button 
+                className={styles.buttonDeleteConfirm}
+                onClick={handleDeleteConfirm}
+              >
+                Xác nhận xóa
+              </button>
+              <button 
+                className={styles.buttonCancel}
+                onClick={() => setDeleteConfirm({ show: false, supplierId: null, supplierName: '' })}
+              >
+                Hủy
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <table className={styles.table}>
         <thead>
           <tr>
-            {['ID', 'Tên', 'Địa chỉ', 'SĐT', 'Email', 'Người LH', 'ĐKTT', 'Điểm', 'Lần ĐG', 'Ngày tạo', 'Ngày cập nhật', 'Hành động'].map(header => (
+            {['ID', 'Tên', 'Địa chỉ', 'SĐT', 'Email', 'Người LH', 'ĐKTT', 'Điểm', 'Lần ĐG', 'Hành động'].map(header => (
               <th key={header}>{header}</th>
             ))}
           </tr>
@@ -323,23 +368,18 @@ function SupplierList() {
               <td>{supplier.dieuKienThanhToan?.substring(0, 50)}...</td>
               <td>{supplier.diemDanhGia}</td>
               <td>{supplier.soLanDanhGia}</td>
-              <td>{formatDate(supplier.ngayTao)}</td>
-              <td>{formatDate(supplier.ngayCapNhat)}</td>
               <td className={styles.actions}>
                 <button onClick={() => setModal({ type: 'view', data: supplier })}>Xem</button>
                 <button onClick={() => setModal({ type: 'edit', data: supplier })}>Sửa</button>
-                {/* ************** NÚT ĐÁNH GIÁ MỚI ************** */}
                 <button
                   className={styles.buttonRate}
                   onClick={() => setModal({ type: 'rate', data: supplier })}
                 >
                   Đánh giá
                 </button>
-                {/* ********************************************* */}
-                <button onClick={() =>
-                  handleSupplierAction('DELETE', `${API_URL}${supplier.nccId}`, null, () =>
-                    setSuppliers(suppliers.filter(sp => sp.nccId !== supplier.nccId)))
-                }>
+                <button 
+                  onClick={() => handleDeleteClick(supplier.nccId, supplier.tenNCC)}
+                >
                   Xóa
                 </button>
               </td>

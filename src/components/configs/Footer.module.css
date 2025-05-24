@@ -1,0 +1,63 @@
+/* ==================== Footer Styles ==================== */
+.appFooter {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2rem 0 0;
+  margin-top: 2rem;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.footerSection {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 1rem;
+  padding: 0 15px;
+}
+
+.footerSection h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.footerSection p, 
+.footerSection li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.footerSection i {
+  margin-right: 8px;
+  width: 20px;
+  text-align: center;
+}
+
+.footerSection a {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footerSection a:hover {
+  color: var(--primary-color);
+}
+
+.footerBottom {
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid #4a6278;
+  font-size: 0.9rem;
+}

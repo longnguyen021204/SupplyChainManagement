@@ -1,0 +1,229 @@
+/* styles/CustomerSupport.module.css */
+
+body {
+    background-color: #f8f9fa; /* Màu nền nhẹ nhàng cho toàn trang */
+}
+
+.supportContainer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.title {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.description {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* FAQ Search Section */
+.faqSearchSection {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.faqSearchSection h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.faqSearchInput {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faqSearchInput:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* FAQ List Section (Accordion Styles) */
+.faqListSection {
+    margin-bottom: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.faqItem {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Important for animation */
+    transition: box-shadow 0.2s ease;
+}
+
+.faqItem:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.faqQuestion {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    font-size: 1.15em;
+    font-weight: 600;
+    background-color: #e9ecef; /* Slightly darker for question header */
+    border-bottom: 1px solid #dee2e6; /* Separator for question */
+    transition: background-color 0.3s ease;
+}
+
+.faqQuestion:hover {
+    background-color: #e2e6ea;
+}
+
+.faqItem.open .faqQuestion {
+    background-color: #d8e6f3; /* Color when open */
+    border-bottom: none;
+}
+
+.toggleIcon {
+    font-size: 1.5em;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    padding-left: 10px; /* Space between text and icon */
+}
+
+/* Style for plus/minus icon */
+.faqItem.open .toggleIcon {
+    transform: rotate(0deg); /* Icon stays as minus */
+}
+
+.faqAnswer {
+    max-height: 0; /* Initially hidden */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Smooth slide effect */
+    padding: 0 20px; /* Adjust padding for collapse */
+}
+
+.faqItem.open .faqAnswer {
+    max-height: 500px; /* Max height large enough to show content */
+    padding: 15px 20px; /* Restore padding when open */
+    border-top: none; /* No top border when open */
+}
+
+.faqAnswer p {
+    margin: 0; /* Remove default paragraph margin */
+    color: #555;
+    line-height: 1.6;
+}
+
+.noFaqFound {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+}
+
+/* Divider for visual separation */
+.divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    margin: 40px 0;
+}
+
+/* Form styles (unchanged) */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup select,
+.formGroup textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formGroup input[type="text"]:focus,
+.formGroup input[type="email"]:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.formGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submitButton {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submitButton:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.submitButton:active {
+    transform: translateY(0);
+}
+
+.successMessage {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px;
+}

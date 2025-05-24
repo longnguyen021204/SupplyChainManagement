@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './styles/QLKhoHang.module.css';
 
 const API = {
-  WAREHOUSE: 'http://localhost:8080/SupplyChainManagement/api/warehouse/',
+  WAREHOUSE: 'http://localhost:8080/SupplyChainManagement/api/khohang/',
   INVENTORY: 'http://localhost:8080/SupplyChainManagement/api/quanlykho',
 };
 

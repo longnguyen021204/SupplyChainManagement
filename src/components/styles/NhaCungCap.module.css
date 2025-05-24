@@ -173,3 +173,18 @@
     font-size: 0.8rem;
     margin-top: 5px;
 }
+
+.buttonDeleteConfirm {
+  background-color: #ff4444;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.buttonDeleteConfirm:hover {
+  background-color: #cc0000;
+}
+

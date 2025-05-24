@@ -232,3 +232,40 @@
     font-size: 14px;
   }
 }
+/* Style cho nút Chi tiết trong bảng */
+.table button {
+  background-color: #4CAF50; /* Màu xanh lá */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.table button:hover {
+  background-color: #45a049; /* Màu xanh lá đậm hơn khi hover */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.table button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+/* Nếu muốn thêm hiệu ứng focus */
+.table button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
+}
+
+/* Responsive cho nút */
+@media (max-width: 768px) {
+  .table button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
