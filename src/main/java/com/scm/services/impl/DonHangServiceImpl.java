@@ -4,7 +4,10 @@
  */
 package com.scm.services.impl;
 
+import com.scm.pojo.ChiTietDonHangNhap;
 import com.scm.pojo.DonHang;
+import com.scm.repositories.ChiTietDonHangNhapRepository;
+import com.scm.repositories.ChiTietDonHangXuatRepository;
 import com.scm.repositories.DonHangRepository;
 import com.scm.services.DonHangService;
 import java.util.Date;
@@ -21,6 +24,10 @@ public class DonHangServiceImpl implements DonHangService {
 
     @Autowired
     private DonHangRepository dhRepo;
+    @Autowired
+    private ChiTietDonHangNhapRepository dhnRepo;
+    @Autowired
+    private ChiTietDonHangXuatRepository dhxRepo;
 
     @Override
     public DonHang getDonHangByMaDH(String maDH) {

@@ -31,4 +31,9 @@ public class ChiTietDonHangXuatServiceImpl implements ChiTietDonHangXuatService 
         return this.dhxRepo.createDonHangXuat(dhXuat);
     }
 
+    @Override
+    public List<ChiTietDonHangXuat> getDonHangXuatById(int dhId) {
+        return this.dhxRepo.getDonHangXuatById(dhId);
+    }
+
 }

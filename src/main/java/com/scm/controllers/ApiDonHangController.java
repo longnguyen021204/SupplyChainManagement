@@ -4,7 +4,11 @@
  */
 package com.scm.controllers;
 
+import com.scm.pojo.ChiTietDonHangNhap;
+import com.scm.pojo.ChiTietDonHangXuat;
 import com.scm.pojo.DonHang;
+import com.scm.services.ChiTietDonHangNhapService;
+import com.scm.services.ChiTietDonHangXuatService;
 import com.scm.services.DonHangService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,26 +28,52 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class ApiDonHangController {
+
     @Autowired
     private DonHangService dhService;
-    
+    @Autowired
+    private ChiTietDonHangNhapService dhNhapService;
+    @Autowired
+    private ChiTietDonHangXuatService dhXuatService;
+
     @GetMapping("/donhang")
     public ResponseEntity<List<DonHang>> donHang() {
         return new ResponseEntity<>(this.dhService.getDonHang(), HttpStatus.OK);
     }
+
     @GetMapping("/donhang/donhang-xuat/{khoId}")
     public ResponseEntity<List<DonHang>> getDonHangXuatKhoId(@PathVariable(value = "khoId") int khoId) {
         return new ResponseEntity<>(this.dhService.getDonHangXuat(khoId), HttpStatus.OK);
     }
+
     @GetMapping("/donhang/donhang-nhap/{khoId}")
     public ResponseEntity<List<DonHang>> getDonHangNhapKhoId(@PathVariable(value = "khoId") int khoId) {
         return new ResponseEntity<>(this.dhService.getDonHangNhap(khoId), HttpStatus.OK);
     }
-    
+
     @PostMapping("/donhang/new")
-    public ResponseEntity<DonHang> themDonHang(@RequestBody DonHang dh){
-        return new ResponseEntity<>(this.dhService.createDonHang(dh), HttpStatus.CREATED);
+    public ResponseEntity<DonHang> themDonHang(@RequestBody DonHang dh) {
+        try {
+            if ((dh.getKhoNhap() == null && dh.getKhoXuat() == null)
+                    || (dh.getKhoNhap() != null && dh.getKhoXuat() != null)) {
+                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            } 
+            //NHAP HANG
+            else if (dh.getKhoNhap() != null && dh.getChiTietDonHangNhap() != null) {
+
+                return new ResponseEntity<>(this.dhService.createDonHang(dh), HttpStatus.CREATED);
+            } 
+            //XUAT HANG
+            else if (dh.getKhoXuat() != null && dh.getChiTietDonHangXuat() != null) {
+                
+                return new ResponseEntity<>(this.dhService.createDonHang(dh), HttpStatus.CREATED);
+            } 
+            else {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
-    
-    
+
 }

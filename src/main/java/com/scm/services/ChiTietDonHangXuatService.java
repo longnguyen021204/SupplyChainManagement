@@ -15,5 +15,7 @@ public interface ChiTietDonHangXuatService {
 
     List<ChiTietDonHangXuat> getDonHangXuat();
 
+    List<ChiTietDonHangXuat> getDonHangXuatById(int dhId);
+
     ChiTietDonHangXuat createDonHangXuat(ChiTietDonHangXuat dhXuat);
 }

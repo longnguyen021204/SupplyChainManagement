@@ -17,7 +17,8 @@ import java.util.Date;
 @Entity
 @Table(name = "ChiTietDonHangNhap")
 @NamedQueries({
-    @NamedQuery(name = "ChiTietDonHangNhap.findAll", query = "SELECT c FROM ChiTietDonHangNhap c")
+    @NamedQuery(name = "ChiTietDonHangNhap.findAll", query = "SELECT c FROM ChiTietDonHangNhap c"),
+    @NamedQuery(name = "ChiTietDonHangNhap.findByDonHangId", query = "SELECT c FROM ChiTietDonHangNhap c WHERE c.donHang.dhId = :dhId")
 })
 public class ChiTietDonHangNhap implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -58,6 +59,10 @@ public class ChiTietDonHangNhap implements Serializable {
 
     @Column(name = "NgayCapNhat")
     private Date ngayCapNhat;
+
+    public ChiTietDonHangNhap(DonHang donHang) {
+        this.donHang = donHang;
+    }
 
     
 

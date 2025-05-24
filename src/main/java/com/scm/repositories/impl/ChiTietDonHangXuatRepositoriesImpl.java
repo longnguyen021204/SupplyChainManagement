@@ -46,4 +46,12 @@ public class ChiTietDonHangXuatRepositoriesImpl implements ChiTietDonHangXuatRep
         return dhXuat;
     }
 
+    @Override
+    public List<ChiTietDonHangXuat> getDonHangXuatById(int dhId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("ChiTietDonHangXuat.findAll", ChiTietDonHangXuat.class);
+        q.setParameter("dhId", dhId);
+        return q.getResultList();
+    }
+
 }

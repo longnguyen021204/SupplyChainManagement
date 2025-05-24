@@ -31,4 +31,9 @@ public class ChiTietDonHangNhapServiceImpl implements ChiTietDonHangNhapService 
         return this.dhnRepo.createDonHangNhap(dhNhap);
     }
 
+    @Override
+    public List<ChiTietDonHangNhap> getDonHangNhapById(int dhId) {
+        return this.dhnRepo.getDonHangNhapById(dhId);
+    }
+
 }

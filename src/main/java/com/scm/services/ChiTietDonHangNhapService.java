@@ -15,5 +15,7 @@ public interface ChiTietDonHangNhapService {
 
     List<ChiTietDonHangNhap> getDonHangNhap();
 
+    List<ChiTietDonHangNhap> getDonHangNhapById(int dhId);
+
     ChiTietDonHangNhap createDonHangNhap(ChiTietDonHangNhap dhNhap);
 }

@@ -4,6 +4,7 @@
  */
 package com.scm.repositories.impl;
 
+import com.scm.pojo.ChiTietDonHangNhap;
 import com.scm.pojo.DonHang;
 import com.scm.repositories.DonHangRepository;
 import jakarta.persistence.Query;
@@ -63,8 +64,7 @@ public class DonHangRepositoriesImpl implements DonHangRepository {
     @Override
     public DonHang createDonHang(DonHang dh) {
         Session s = this.factory.getObject().getCurrentSession();
-        if (dh.getDhId() == null)
-        {
+        if (dh.getDhId() == null) {
             s.persist(dh);
         } else {
             s.merge(dh);
@@ -72,8 +72,7 @@ public class DonHangRepositoriesImpl implements DonHangRepository {
         s.refresh(dh);
         return dh;
     }
-    
-    
+
     @Override
     public void cancelDonHang(String maDH) {
         Session s = this.factory.getObject().getCurrentSession();

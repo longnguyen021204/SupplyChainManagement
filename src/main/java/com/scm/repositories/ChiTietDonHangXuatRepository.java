@@ -15,5 +15,6 @@ import java.util.Map;
  */
 public interface ChiTietDonHangXuatRepository {
     List<ChiTietDonHangXuat> getDonHangXuat();
+    List<ChiTietDonHangXuat> getDonHangXuatById(int dhId);
     ChiTietDonHangXuat createDonHangXuat(ChiTietDonHangXuat dhXuat);
 }

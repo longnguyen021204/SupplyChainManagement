@@ -47,4 +47,12 @@ public class ChiTietDonHangNhapRepositoriesImpl implements ChiTietDonHangNhapRep
         return dhNhap;
     }
 
+    @Override
+    public List<ChiTietDonHangNhap> getDonHangNhapById(int dhId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("ChiTietDonHangNhap.findByDonHangId", ChiTietDonHangNhap.class);
+        q.setParameter("dhId", dhId);
+        return q.getResultList();
+    }
+
 }

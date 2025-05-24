@@ -44,7 +44,7 @@ public class DonHang implements Serializable {
     @Column(name = "TrangThai", length = 50)
     private String trangThai;
 
-    @Column(name = "TongTien", nullable = false, precision = 15, scale = 2)
+    @Column(name = "TongTien", precision = 15, scale = 2)
     private BigDecimal tongTien;
 
     @Column(name = "GhiChu")
@@ -97,19 +97,20 @@ public class DonHang implements Serializable {
         this.ngayTao = new Date();
     }
 
-    public DonHang(Integer dhId, String maDH, String trangThai, BigDecimal tongTien, String ghiChu, Date ngayTao, KhoHang khoNhap, KhoHang khoXuat) {
+    public DonHang(Integer dhId, String maDH, String trangThai, String ghiChu, Date ngayTao, KhoHang khoNhap, KhoHang khoXuat,
+                   List<ChiTietDonHangNhap> dhn, List<ChiTietDonHangXuat> dhx ) {
         this.dhId = dhId;
         this.maDH = maDH;
 //        this.ngayDatHang = ngayDatHang;
         this.trangThai = trangThai;
-        this.tongTien = tongTien;
+//        this.tongTien = tongTien;
         this.ghiChu = ghiChu;
 //        this.ngayTao = ngayTao;
 //        this.ngayCapNhat = ngayCapNhat;
         this.khoNhap = khoNhap;
         this.khoXuat = khoXuat;
-//        this.chiTietDonHangNhap = chiTietDonHangNhap;
-//        this.chiTietDonHangXuat = chiTietDonHangXuat;
+        this.chiTietDonHangNhap = dhn;
+        this.chiTietDonHangXuat = dhx;
 //        this.vanChuyen = vanChuyen;
 //        this.thanhToan = thanhToan;
 //        this.hoaDon = hoaDon;

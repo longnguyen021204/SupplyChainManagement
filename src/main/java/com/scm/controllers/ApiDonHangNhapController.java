@@ -5,7 +5,10 @@
 package com.scm.controllers;
 
 import com.scm.pojo.ChiTietDonHangNhap;
+import com.scm.pojo.DonHang;
+import com.scm.pojo.NhaCungCap;
 import com.scm.services.ChiTietDonHangNhapService;
+import jakarta.ws.rs.Path;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +33,10 @@ public class ApiDonHangNhapController {
     @GetMapping("/nhapkho")
     public ResponseEntity<List<ChiTietDonHangNhap>> getDonNhapKho() {
         return new ResponseEntity<>(this.dhnService.getDonHangNhap(), HttpStatus.OK);
+    }
+    @GetMapping("/nhapkho/{dhId}")
+    public ResponseEntity<List<ChiTietDonHangNhap>> getDonNhapKhoById(@PathVariable(value = "dhId") int id) {
+        return new ResponseEntity<>(this.dhnService.getDonHangNhapById(id), HttpStatus.OK);
     }
     
     @PostMapping("/nhap-hang/new")
