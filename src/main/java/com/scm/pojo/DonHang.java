@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -58,19 +59,21 @@ public class DonHang implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "KhoNhapId", referencedColumnName = "Kho_ID")
+    @JsonIgnore
     private KhoHang khoNhap;
 
     @ManyToOne
     @JoinColumn(name = "KhoXuatId", referencedColumnName = "Kho_ID")
+    @JsonIgnore
     private KhoHang khoXuat;
    
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<ChiTietDonHangNhap> chiTietDonHangNhap;
+//    @JsonIgnore
+    private Set<ChiTietDonHangNhap> chiTietDonHangNhap;
 
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<ChiTietDonHangXuat> chiTietDonHangXuat;
+//    @JsonIgnore
+    private Set<ChiTietDonHangXuat> chiTietDonHangXuat;
 
     @OneToOne(mappedBy = "donHang", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -78,7 +81,7 @@ public class DonHang implements Serializable {
 
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<ThanhToan> thanhToan;
+    private Set<ThanhToan> thanhToan;
 
     @OneToOne(mappedBy = "donHang", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -86,11 +89,11 @@ public class DonHang implements Serializable {
 
     @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<HoTroKhachHang> hoTroKhachHang;
+    private Set<HoTroKhachHang> hoTroKhachHang;
 
     @OneToMany(mappedBy = "donHang")
     @JsonIgnore
-    private List<ChiPhi> chiPhi;
+    private Set<ChiPhi> chiPhi;
 
     public DonHang() {
         this.ngayDatHang = new Date();
@@ -98,7 +101,7 @@ public class DonHang implements Serializable {
     }
 
     public DonHang(Integer dhId, String maDH, String trangThai, String ghiChu, Date ngayTao, KhoHang khoNhap, KhoHang khoXuat,
-                   List<ChiTietDonHangNhap> dhn, List<ChiTietDonHangXuat> dhx ) {
+                   Set<ChiTietDonHangNhap> dhn, Set<ChiTietDonHangXuat> dhx ) {
         this.dhId = dhId;
         this.maDH = maDH;
 //        this.ngayDatHang = ngayDatHang;
@@ -235,30 +238,19 @@ public class DonHang implements Serializable {
     /**
      * @return the chiTietDonHangNhap
      */
-    public List<ChiTietDonHangNhap> getChiTietDonHangNhap() {
+    public Set<ChiTietDonHangNhap> getChiTietDonHangNhap() {
         return chiTietDonHangNhap;
     }
 
-    /**
-     * @param chiTietDonHangNhap the chiTietDonHangNhap to set
-     */
-    public void setChiTietDonHangNhap(List<ChiTietDonHangNhap> chiTietDonHangNhap) {
-        this.chiTietDonHangNhap = chiTietDonHangNhap;
-    }
+
 
     /**
      * @return the chiTietDonHangXuat
      */
-    public List<ChiTietDonHangXuat> getChiTietDonHangXuat() {
+    public Set<ChiTietDonHangXuat> getChiTietDonHangXuat() {
         return chiTietDonHangXuat;
     }
 
-    /**
-     * @param chiTietDonHangXuat the chiTietDonHangXuat to set
-     */
-    public void setChiTietDonHangXuat(List<ChiTietDonHangXuat> chiTietDonHangXuat) {
-        this.chiTietDonHangXuat = chiTietDonHangXuat;
-    }
 
     /**
      * @return the vanChuyen
@@ -277,16 +269,10 @@ public class DonHang implements Serializable {
     /**
      * @return the thanhToan
      */
-    public List<ThanhToan> getThanhToan() {
+    public Set<ThanhToan> getThanhToan() {
         return thanhToan;
     }
 
-    /**
-     * @param thanhToan the thanhToan to set
-     */
-    public void setThanhToan(List<ThanhToan> thanhToan) {
-        this.thanhToan = thanhToan;
-    }
 
     /**
      * @return the hoaDon
@@ -305,30 +291,17 @@ public class DonHang implements Serializable {
     /**
      * @return the hoTroKhachHang
      */
-    public List<HoTroKhachHang> getHoTroKhachHang() {
+    public Set<HoTroKhachHang> getHoTroKhachHang() {
         return hoTroKhachHang;
-    }
-
-    /**
-     * @param hoTroKhachHang the hoTroKhachHang to set
-     */
-    public void setHoTroKhachHang(List<HoTroKhachHang> hoTroKhachHang) {
-        this.hoTroKhachHang = hoTroKhachHang;
     }
 
     /**
      * @return the chiPhi
      */
-    public List<ChiPhi> getChiPhi() {
+    public Set<ChiPhi> getChiPhi() {
         return chiPhi;
     }
 
-    /**
-     * @param chiPhi the chiPhi to set
-     */
-    public void setChiPhi(List<ChiPhi> chiPhi) {
-        this.chiPhi = chiPhi;
-    }
 
     /**
      * @return the khoNhap
@@ -356,6 +329,41 @@ public class DonHang implements Serializable {
      */
     public void setKhoXuat(KhoHang khoXuat) {
         this.khoXuat = khoXuat;
+    }
+
+    /**
+     * @param chiTietDonHangNhap the chiTietDonHangNhap to set
+     */
+    public void setChiTietDonHangNhap(Set<ChiTietDonHangNhap> chiTietDonHangNhap) {
+        this.chiTietDonHangNhap = chiTietDonHangNhap;
+    }
+
+    /**
+     * @param chiTietDonHangXuat the chiTietDonHangXuat to set
+     */
+    public void setChiTietDonHangXuat(Set<ChiTietDonHangXuat> chiTietDonHangXuat) {
+        this.chiTietDonHangXuat = chiTietDonHangXuat;
+    }
+
+    /**
+     * @param thanhToan the thanhToan to set
+     */
+    public void setThanhToan(Set<ThanhToan> thanhToan) {
+        this.thanhToan = thanhToan;
+    }
+
+    /**
+     * @param hoTroKhachHang the hoTroKhachHang to set
+     */
+    public void setHoTroKhachHang(Set<HoTroKhachHang> hoTroKhachHang) {
+        this.hoTroKhachHang = hoTroKhachHang;
+    }
+
+    /**
+     * @param chiPhi the chiPhi to set
+     */
+    public void setChiPhi(Set<ChiPhi> chiPhi) {
+        this.chiPhi = chiPhi;
     }
 
 }

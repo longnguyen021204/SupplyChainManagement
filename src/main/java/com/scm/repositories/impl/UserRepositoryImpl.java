@@ -25,12 +25,16 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
+    
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public List<TaiKhoan> getUserByRole(String role) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("TaiKhoan.findByVaiTro", TaiKhoan.class);
+        q.setParameter("vaiTro", role);
+        return q.getResultList();
     }
 
     @Override
@@ -45,6 +49,7 @@ public class UserRepositoryImpl implements UserRepository {
     public TaiKhoan addAccount(TaiKhoan a) {
         Session s = this.factory.getObject().getCurrentSession();
         s.persist(a);
+        s.refresh(a);
         return a;
     }
 
@@ -52,18 +57,22 @@ public class UserRepositoryImpl implements UserRepository {
     public boolean authenticate(String username, String pwd) {
         TaiKhoan a = this.getUserByUsername(username);
 
-//        return this.passwordEncoder.matches(pwd, a.getMatKhau());
-        return false;
+        return this.passwordEncoder.matches(pwd, a.getMatKhau());
     }
 
     @Override
     public List<TaiKhoan> getAllUser() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("TaiKhoan.findAll", TaiKhoan.class);
+        return q.getResultList();
     }
 
     @Override
     public TaiKhoan getUserByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createNamedQuery("TaiKhoan.findByEmail", TaiKhoan.class);
+        q.setParameter("email", email);
+        return (TaiKhoan) q.getSingleResult();
     }
 
 }

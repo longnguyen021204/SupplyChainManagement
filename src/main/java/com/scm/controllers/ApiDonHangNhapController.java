@@ -44,7 +44,7 @@ public class ApiDonHangNhapController {
         try {
             return new ResponseEntity<>(this.dhnService.createDonHangNhap(dhn), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(dhn, HttpStatus.BAD_REQUEST);
         }
     }
     

@@ -4,6 +4,7 @@
  */
 package com.scm.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -49,20 +50,21 @@ public class DoiTacVanChuyen implements Serializable {
     private Date ngayCapNhat;
 
     @OneToMany(mappedBy = "doiTacVC")
+    @JsonIgnore
     private List<VanChuyen> vanChuyen;
 
     public DoiTacVanChuyen() {
     }
 
-    public DoiTacVanChuyen(Integer dtvcId, String tenDoiTac, String thongTinLienHe, Float diemDanhGia, Integer soLanDanhGia, Date ngayTao, Date ngayCapNhat, List<VanChuyen> vanChuyens) {
+    public DoiTacVanChuyen(Integer dtvcId, String tenDoiTac, String thongTinLienHe, List<VanChuyen> vanChuyen) {
         this.dtvcId = dtvcId;
         this.tenDoiTac = tenDoiTac;
         this.thongTinLienHe = thongTinLienHe;
-        this.diemDanhGia = diemDanhGia;
-        this.soLanDanhGia = soLanDanhGia;
-        this.ngayTao = ngayTao;
-        this.ngayCapNhat = ngayCapNhat;
-        this.vanChuyen = vanChuyens;
+//        this.diemDanhGia = diemDanhGia;
+//        this.soLanDanhGia = soLanDanhGia;
+//        this.ngayTao = ngayTao;
+//        this.ngayCapNhat = ngayCapNhat;
+        this.vanChuyen = vanChuyen;
     }
 
     /**

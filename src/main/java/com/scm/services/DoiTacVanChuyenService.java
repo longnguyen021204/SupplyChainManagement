@@ -13,7 +13,10 @@ import java.util.List;
  */
 public interface DoiTacVanChuyenService {
 
+    DoiTacVanChuyen themDTVC(DoiTacVanChuyen d);
+
     List<DoiTacVanChuyen> getDoiTacByName(String tenDoiTac);
 
-    List<DoiTacVanChuyen> getDoiTacByDiemDG(Float diemDG);
+    List<DoiTacVanChuyen> getDoiTacByDiemDGDesc();
+    List<DoiTacVanChuyen> getDoiTac();
 }

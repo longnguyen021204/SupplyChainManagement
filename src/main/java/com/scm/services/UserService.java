@@ -6,12 +6,13 @@ package com.scm.services;
 
 import com.scm.pojo.TaiKhoan;
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author LENOVO
  */
-public interface UserService {
+public interface UserService extends UserDetailsService{
     List<TaiKhoan> getAllUser();
     List<TaiKhoan> getUserByRole(String role);
     TaiKhoan getUserByUsername(String username);

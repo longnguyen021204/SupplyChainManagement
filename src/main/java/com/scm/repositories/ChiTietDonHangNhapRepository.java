@@ -16,5 +16,5 @@ import java.util.Map;
 public interface ChiTietDonHangNhapRepository {
     List<ChiTietDonHangNhap> getDonHangNhap();
     List<ChiTietDonHangNhap> getDonHangNhapById(int dhId);
-    ChiTietDonHangNhap createDonHangNhap(ChiTietDonHangNhap dhNhap);
+    ChiTietDonHangNhap createDonHangNhap( ChiTietDonHangNhap dhNhap);
 }

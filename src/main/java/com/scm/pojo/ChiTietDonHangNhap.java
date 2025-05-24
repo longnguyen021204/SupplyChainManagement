@@ -60,13 +60,12 @@ public class ChiTietDonHangNhap implements Serializable {
     @Column(name = "NgayCapNhat")
     private Date ngayCapNhat;
 
-    public ChiTietDonHangNhap(DonHang donHang) {
-        this.donHang = donHang;
+    public ChiTietDonHangNhap() {
     }
 
     
 
-    public ChiTietDonHangNhap(Integer ctdhnId, DonHang donHang, NhaCungCap nhaCungCap, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia, BigDecimal thanhTien, Date ngayNhapKho) {
+    public ChiTietDonHangNhap(Integer ctdhnId, DonHang donHang, NhaCungCap nhaCungCap, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia) {
         this.ctdhnId = ctdhnId;
         this.donHang = donHang;
         this.nhaCungCap = nhaCungCap;
@@ -74,8 +73,8 @@ public class ChiTietDonHangNhap implements Serializable {
         this.tenSanPham = tenSanPham;
         this.soLuong = soLuong;
         this.donGia = donGia;
-        this.thanhTien = thanhTien;
-        this.ngayNhapKho = ngayNhapKho;
+//        this.thanhTien = thanhTien;
+//        this.ngayNhapKho = ngayNhapKho;
 //        this.ngayTao = ngayTao;
 //        this.ngayCapNhat = ngayCapNhat;
     }

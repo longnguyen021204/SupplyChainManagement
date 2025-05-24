@@ -49,6 +49,7 @@ public class QuanLyKho implements Serializable{
     private Date ngayCapNhat;
 
     public QuanLyKho() {
+        this.ngayCapNhat = new Date();
     }
 
     public QuanLyKho(Integer qlkId, KhoHang khoHang, String maSanPham, String tenSanPham, Integer soLuongTon) {

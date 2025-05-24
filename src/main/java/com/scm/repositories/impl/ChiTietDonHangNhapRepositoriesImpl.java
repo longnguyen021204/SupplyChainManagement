@@ -9,6 +9,7 @@ import com.scm.pojo.DonHang;
 import com.scm.pojo.HoTroKhachHang;
 import com.scm.repositories.ChiTietDonHangNhapRepository;
 import jakarta.persistence.Query;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import org.hibernate.Session;
@@ -38,7 +39,7 @@ public class ChiTietDonHangNhapRepositoriesImpl implements ChiTietDonHangNhapRep
     @Override
     public ChiTietDonHangNhap createDonHangNhap(ChiTietDonHangNhap dhNhap) {
         Session s = this.factory.getObject().getCurrentSession();
-        if (dhNhap.getCtdhnId() == null) {
+        if (dhNhap.getDonHang().getDhId() == null) {
             s.persist(dhNhap);
         } else {
             s.merge(dhNhap);

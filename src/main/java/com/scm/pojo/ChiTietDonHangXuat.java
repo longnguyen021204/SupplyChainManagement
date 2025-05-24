@@ -55,6 +55,11 @@ public class ChiTietDonHangXuat implements Serializable{
     @Column(name = "NgayCapNhat")
     private Date ngayCapNhat;
 
+    public ChiTietDonHangXuat() {
+    }
+    
+    
+
     public ChiTietDonHangXuat(Integer ctdhxId, DonHang donHang, String maSanPham, String tenSanPham, Integer soLuong, BigDecimal donGia, BigDecimal thanhTien, Date ngayXuatKho) {
         this.ctdhxId = ctdhxId;
         this.donHang = donHang;

@@ -61,8 +61,7 @@ public class QuanLyKhoRepositoriesImpl implements QuanLyKhoRepository {
         QuanLyKho p = getSPByKhoIdAndMaSP(sp.getKhoHang().getKhoId(), sp.getMaSanPham());
         if (p == null) {
             a.persist(sp);
-        }
-        else {
+        } else {
             int soLuong = p.getSoLuongTon() + sp.getSoLuongTon();
             p.setSoLuongTon(soLuong);
         }
@@ -76,7 +75,8 @@ public class QuanLyKhoRepositoriesImpl implements QuanLyKhoRepository {
         q.setParameter("khoId", khoId);
         q.setParameter("maSanPham", maSanPham);
 
-        return (QuanLyKho) q.getSingleResult();
+        List<QuanLyKho> result = q.getResultList();
+        return result.isEmpty() ? null : result.get(0);
     }
 
 }

@@ -4,10 +4,41 @@
  */
 package com.scm.services.impl;
 
+import com.scm.pojo.DoiTacVanChuyen;
+import com.scm.repositories.DoiTacVanChuyenRepository;
+import com.scm.services.DoiTacVanChuyenService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author LENOVO
  */
-public class DoiTacVanChuyenServiceImpl {
-    
+@Service
+public class DoiTacVanChuyenServiceImpl implements DoiTacVanChuyenService {
+
+    @Autowired
+    private DoiTacVanChuyenRepository dtvcRepo;
+
+    @Override
+    public DoiTacVanChuyen themDTVC(DoiTacVanChuyen d) {
+        return this.dtvcRepo.themDTVC(d);
+    }
+
+    @Override
+    public List<DoiTacVanChuyen> getDoiTacByName(String tenDoiTac) {
+        return this.dtvcRepo.getDoiTacByName(tenDoiTac);
+    }
+
+    @Override
+    public List<DoiTacVanChuyen> getDoiTacByDiemDGDesc() {
+        return this.dtvcRepo.getDoiTacByDiemDGDesc();
+    }
+
+    @Override
+    public List<DoiTacVanChuyen> getDoiTac() {
+        return this.dtvcRepo.getDoiTac();
+    }
+
 }

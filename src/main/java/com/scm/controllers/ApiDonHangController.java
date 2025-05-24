@@ -12,6 +12,7 @@ import com.scm.services.ChiTietDonHangXuatService;
 import com.scm.services.DonHangService;
 import java.lang.System.Logger;
 import java.util.List;
+import java.util.Set;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,6 +52,10 @@ public class ApiDonHangController {
     @GetMapping("/donhang/donhang-nhap/{khoId}")
     public ResponseEntity<List<DonHang>> getDonHangNhapKhoId(@PathVariable(value = "khoId") int khoId) {
         return new ResponseEntity<>(this.dhService.getDonHangNhap(khoId), HttpStatus.OK);
+    }
+    @GetMapping("/donhang/{maDH}")
+    public ResponseEntity<Set<ChiTietDonHangNhap>> getDonHangById(@PathVariable(value = "maDH") String maDH) {
+        return new ResponseEntity<>(this.dhService.getDonHangByMaDH(maDH).getChiTietDonHangNhap(), HttpStatus.OK);
     }
 
 

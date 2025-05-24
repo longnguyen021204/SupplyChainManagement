@@ -12,6 +12,8 @@ import java.util.List;
  * @author LENOVO
  */
 public interface DoiTacVanChuyenRepository {
+    DoiTacVanChuyen themDTVC(DoiTacVanChuyen d);
     List<DoiTacVanChuyen> getDoiTacByName(String tenDoiTac);
-    List<DoiTacVanChuyen> getDoiTacByDiemDG(Float diemDG);
+    List<DoiTacVanChuyen> getDoiTac();
+    List<DoiTacVanChuyen> getDoiTacByDiemDGDesc();
 }
